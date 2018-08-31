@@ -10,7 +10,7 @@
     "type": "git",
     "url": ""
   },
-  "author": "Scott Davis",
+  "author": "Scott Davis <stdavis@utah.gov>",
   "devDependencies": {
     "babel-core": "6.26.3",
     "babel-plugin-transform-es2015-modules-simple-amd": "0.3.0",
