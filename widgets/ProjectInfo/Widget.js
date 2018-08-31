@@ -11,7 +11,7 @@ export default declare([BaseWidget], {
   // add additional properties here
 
   // methods to communication with app container:
-  postCreate () {
+  postCreate() {
     this.inherited(arguments);
     console.log('ProjectInfo::postCreate');
   }

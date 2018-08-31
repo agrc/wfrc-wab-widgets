@@ -1,0 +1,9 @@
+{
+  "extends": "agrc",
+  "rules": {
+    "indent": ["error", 2]
+  },
+  "parserOptions": {
+    "sourceType": "module"
+  }
+}
