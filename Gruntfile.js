@@ -6,7 +6,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-babel');
     grunt.loadNpmTasks('grunt-sass');
-    var appDir = 'TODO - AFTER CREATING AN APP, PLEASE PUT PATH HERE AND INSERT ENTRY IN SYNC.MAIN.FILES BELOW.';
+    var appDir = '/Users/stdavis/WebAppBuilderForArcGIS/server/apps/2';
     var stemappDir = '/Users/stdavis/WebAppBuilderForArcGIS/client/stemapp';
     grunt.initConfig({
         sync: {
@@ -16,6 +16,10 @@ module.exports = function (grunt) {
                         cwd: 'dist/',
                         src: '**',
                         dest: stemappDir
+                    }, {
+                        cwd: 'dist/',
+                        src: '**',
+                        dest: appDir
                     }]
             }
         },
