@@ -104,5 +104,13 @@ module.exports = function (grunt) {
       }
     }
   });
+
   grunt.registerTask('default', ['watch']);
+
+  grunt.registerTask('travis', [
+    'eslint',
+    'sass',
+    'babel',
+    'copy'
+  ]);
 };
