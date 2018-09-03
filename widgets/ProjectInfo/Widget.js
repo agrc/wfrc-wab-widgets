@@ -1,19 +1,17 @@
 import declare from 'dojo/_base/declare';
 import BaseWidget from 'jimu/BaseWidget';
+import ProjectInfo from './ProjectInfo/ProjectInfo';
 
-// To create a widget, you need to derive from BaseWidget.
+
 export default declare([BaseWidget], {
 
-  // Custom widget code goes here
-
   baseClass: 'project-info',
+  mainWidget: null,
 
-  // add additional properties here
-
-  // methods to communication with app container:
   postCreate() {
-    this.inherited(arguments);
-    console.log('ProjectInfo::postCreate');
+    this.mainWidget = new ProjectInfo({
+      config: this.config
+    }, this.widgetContainer);
   }
   // startup() {
   //   this.inherited(arguments);

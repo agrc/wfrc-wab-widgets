@@ -17,11 +17,20 @@ module.exports = function (grunt) {
             'themes/*.js',
             'themes/**/*.js',
             'themes/**/**/*.js',
-            'themes/!**/**/nls/*.js'
+            'themes/!**/**/nls/*.js',
+            'tests/spec/**/*.js'
           ],
           dest: 'dist/'
         }]
       }
+    },
+    clean: {
+      dist: {
+        src: 'dist/*'
+      }
+    },
+    connect: {
+      uses_defaults: {} // eslint-disable-line camelcase
     },
     copy: {
       main: {
@@ -41,17 +50,28 @@ module.exports = function (grunt) {
         expand: true
       }
     },
-    clean: {
-      dist: {
-        src: 'dist/*'
-      }
-    },
     eslint: {
       options: {
         configFile: '.eslintrc'
       },
       main: {
         src: ['Gruntfile.js', 'widgets/**/*.js']
+      }
+    },
+    jasmine: {
+      main: {
+        options: {
+          specs: ['dist/tests/spec/Spec*.js'],
+          vendor: [
+            'node_modules/jasmine-favicon-reporter/vendor/favico.js',
+            'node_modules/jasmine-favicon-reporter/jasmine-favicon-reporter.js',
+            'tests/jasmineTestBootstrap.js',
+            'node_modules/dojo/dojo.js',
+            'tests/jasmineAMDErrorChecking.js'
+          ],
+          host: 'http://localhost:8000',
+          keepRunner: true
+        }
       }
     },
     sass: {
@@ -86,7 +106,8 @@ module.exports = function (grunt) {
       main: {
         files: [
           'widgets/**',
-          'themes/**'
+          'themes/**',
+          'tests/**'
         ],
         tasks: [
           'eslint',
@@ -94,6 +115,7 @@ module.exports = function (grunt) {
           'sass',
           'babel',
           'copy',
+          'jasmine:main:build',
           'sync'
         ],
         options: {
@@ -105,12 +127,12 @@ module.exports = function (grunt) {
     }
   });
 
-  grunt.registerTask('default', ['watch']);
+  grunt.registerTask('default', ['connect', 'watch']);
+
+  grunt.registerTask('test', ['clean', 'sass', 'babel', 'copy', 'connect', 'jasmine']);
 
   grunt.registerTask('travis', [
     'eslint',
-    'sass',
-    'babel',
-    'copy'
+    'test'
   ]);
 };

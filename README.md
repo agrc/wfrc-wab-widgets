@@ -1,4 +1,4 @@
-# wfrc-wab-widgets
+# wfrc-wab-widgets [![Build Status](https://travis-ci.com/agrc/wfrc-wab-widgets.svg?branch=master)](https://travis-ci.com/agrc/wfrc-wab-widgets)
 Web App Builder Widgets built for Wasatch Front Regional Council
 
 [Requirements](https://docs.google.com/document/d/1h_7FTRrov3WgGAcQXJFpw87Adz9oFyiwgOkJOsYnqLw/edit)
