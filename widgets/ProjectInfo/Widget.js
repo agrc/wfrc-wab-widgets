@@ -4,13 +4,12 @@ import ProjectInfo from './ProjectInfo/ProjectInfo';
 
 
 export default declare([BaseWidget], {
-
-  baseClass: 'project-info',
   mainWidget: null,
 
   postCreate() {
     this.mainWidget = new ProjectInfo({
-      config: this.config
+      config: this.config,
+      map: this.map
     }, this.widgetContainer);
   }
   // startup() {

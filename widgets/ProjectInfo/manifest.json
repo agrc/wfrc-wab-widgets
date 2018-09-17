@@ -1,5 +1,6 @@
 {
   "name": "ProjectInfo",
+  "label": "Project Information",
   "2D": true,
   "3D": false,
   "platform": "HTML",
