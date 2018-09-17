@@ -61,7 +61,7 @@ module.exports = function (grunt) {
     jasmine: {
       main: {
         options: {
-          specs: ['dist/tests/spec/Spec*.js'],
+          specs: ['dist/tests/spec/SpecAll.js'],
           vendor: [
             'node_modules/jasmine-favicon-reporter/vendor/favico.js',
             'node_modules/jasmine-favicon-reporter/jasmine-favicon-reporter.js',
