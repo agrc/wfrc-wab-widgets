@@ -4,7 +4,7 @@ module.exports = function (grunt) {
 
   const appDir = '/Users/stdavis/WebAppBuilderForArcGIS/server/apps/2';
   const stemappDir = '/Users/stdavis/WebAppBuilderForArcGIS/client/stemapp';
-  const bumpFiles = ['package.json', 'package-lock.json'];
+  const bumpFiles = ['package.json', 'package-lock.json', 'widgets/**/manifest.json'];
 
   grunt.initConfig({
     babel: {
@@ -29,13 +29,26 @@ module.exports = function (grunt) {
     bump: {
       options: {
         files: bumpFiles,
-        commitFiles: bumpFiles,
+        commitFiles: bumpFiles.concat('ProjectInfo.zip'),
         pushTo: 'origin'
       }
     },
     clean: {
       dist: {
         src: 'dist/*'
+      }
+    },
+    compress: {
+      ProjectInfo: {
+        options: {
+          archive: 'ProjectInfo.zip'
+        },
+        files: [{
+          src: 'widgets/ProjectInfo/**/**.*',
+          dest: './',
+          cwd: 'dist/',
+          expand: true
+        }]
       }
     },
     connect: {
@@ -160,4 +173,10 @@ module.exports = function (grunt) {
     'eslint',
     'test'
   ]);
+
+  grunt.registerTask('release', function (bumpType) {
+    grunt.task.run('test');
+    grunt.task.run(`bump-only:${bumpType}`);
+    grunt.task.run(['copy', 'compress', 'bump-commit', 'conventionalGithubReleaser']);
+  });
 };
