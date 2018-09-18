@@ -6,6 +6,7 @@ import domConstruct from 'dojo/dom-construct';
 import Query from 'esri/tasks/query';
 import SimpleLineSymbol from 'esri/symbols/SimpleLineSymbol';
 import SimpleMarkerSymbol from 'esri/symbols/SimpleMarkerSymbol';
+import SimpleFillSymbol from 'esri/symbols/SimpleFillSymbol';
 import strings from 'dojo/i18n!./nls/strings';
 import template from 'dojo/text!./ProjectInfo.html';
 
@@ -28,6 +29,11 @@ export default declare([_WidgetBase, _TemplatedMixin], {
         width: 6,
         style: 'esriSLSSolid',
         type: 'esriSLS'
+      }),
+      esriGeometryPolygon: new SimpleFillSymbol({
+        type: 'esriSFS',
+        style: 'esriSFSSolid',
+        color: this.config.selectionColor
       })
     };
 
