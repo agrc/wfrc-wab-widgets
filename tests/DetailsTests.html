@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Details Tests</title>
+
+  <link rel="stylesheet" type="text/css" href="../../node_modules/dojo/resources/dojo.css" />
+  <link rel="stylesheet" type="text/css" href="../../node_modules/dijit/themes/claro/claro.css" />
+  <link rel="stylesheet" type="text/css" href="../../node_modules/arcgis-js-api/css/esri.css" />
+  <link rel="stylesheet" type="text/css" href="http://localhost:3344/webappbuilder/apps/2/jimu.js/css/jimu-theme.css" />
+  <link rel="stylesheet" type="text/css" href="http://localhost:3344/webappbuilder/apps/2/libs/goldenlayout/goldenlayout-base.css" />
+  <link rel="stylesheet" type="text/css" href="http://localhost:3344/webappbuilder/apps/2/libs/goldenlayout/goldenlayout-light-theme.css" />
+  <link rel="stylesheet" type="text/css" href="http://localhost:3344/webappbuilder/apps/2/jimu.js/css/jimu.css" />
+  <link rel="stylesheet" type="text/css" href="../widgets/ProjectInfo/css/style.css" />
+
+  <style>
+    body, html {
+      width: 100%;
+      height: 100%;
+      padding: 10px;
+    }
+    #container {
+      width: 330px;
+      height: 100%;
+      padding: 14px;
+      box-sizing: border-box;
+      border: 1px solid gray;
+    }
+  </style>
+
+  <script type="text/javascript" src="jasmineTestBootstrap.js"></script>
+  <script type="text/javascript" src="../../node_modules/dojo/dojo.js"></script>
+  <script type="text/javascript">
+    require([
+      'widgets/ProjectInfo/ProjectInfo/Details',
+      'dojo/text!./data/feature.json',
+      'dojo/text!./data/fields.json',
+
+      'dojo/domReady!'
+    ], function (Details, featureJson, fieldsJson) {
+      const details = new Details({
+        feature: JSON.parse(featureJson),
+        fields: JSON.parse(fieldsJson),
+        displayField: 'ProjName',
+        config: { excludeFields: ['OBJECTID', 'GlobalID'] }
+      }, document.getElementById('testDiv'));
+      details.startup();
+
+      const details2 = new Details({
+        feature: JSON.parse(featureJson),
+        fields: JSON.parse(fieldsJson),
+        displayField: 'ProjName',
+        config: { excludeFields: ['OBJECTID', 'GlobalID'] }
+      }, document.getElementById('testDiv2'));
+      details2.startup();
+    });
+  </script>
+</head>
+<body>
+  <div id="container" class="project-info">
+    <div id="testDiv"></div>
+    <div id="testDiv2"></div>
+  </div>
+</body>
+</html>

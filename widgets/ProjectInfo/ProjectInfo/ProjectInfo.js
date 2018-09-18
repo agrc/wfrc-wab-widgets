@@ -1,11 +1,13 @@
-import declare from 'dojo/_base/declare';
-import _WidgetBase from 'dijit/_WidgetBase';
 import _TemplatedMixin from 'dijit/_TemplatedMixin';
-import template from 'dojo/text!./ProjectInfo.html';
-import strings from 'dojo/i18n!./nls/strings';
+import _WidgetBase from 'dijit/_WidgetBase';
+import declare from 'dojo/_base/declare';
+import Details from './Details';
+import domConstruct from 'dojo/dom-construct';
 import Query from 'esri/tasks/query';
-import SimpleMarkerSymbol from 'esri/symbols/SimpleMarkerSymbol';
 import SimpleLineSymbol from 'esri/symbols/SimpleLineSymbol';
+import SimpleMarkerSymbol from 'esri/symbols/SimpleMarkerSymbol';
+import strings from 'dojo/i18n!./nls/strings';
+import template from 'dojo/text!./ProjectInfo.html';
 
 
 export default declare([_WidgetBase, _TemplatedMixin], {
@@ -45,17 +47,30 @@ export default declare([_WidgetBase, _TemplatedMixin], {
   onMapClick(clickEvent) {
     console.log('ProjectInfo.onMapClick', clickEvent);
 
+    this.instructions.className = 'hidden';
+
     const query = new Query();
-    query.returnGeometry = true;
     query.geometry = clickEvent.mapPoint;
-    query.outFields = ['*'];
     query.distance = this.getTolerance(this.config.clickPixelTolerance);
     query.units = 'meters';
 
-    Promise.all(this.featureLayers.map(layer => layer.selectFeatures(query))).then(featureSets => {
-      const features = featureSets.reduce((sum, next) => sum.concat(next), []);
-      console.log('features', features);
-    });
+    // return function that adds the fields and displayField properties
+    // to the feature objects for use in the Details Widget
+    const getAddMetaToFeatureFunction = function (layer) {
+      return function (featureSet) {
+        return featureSet.map(feature => {
+          feature.fields = layer.fields;
+          feature.displayField = layer.displayField;
+
+          return feature;
+        });
+      };
+    };
+
+    // query all feature layers and then flatten into a single array of features
+    Promise.all(this.featureLayers.map(layer => {
+      return layer.selectFeatures(query).then(getAddMetaToFeatureFunction(layer));
+    })).then(featureSets => this.setFeatures(featureSets.flat()));
   },
 
   getTolerance(pixelTolerance) {
@@ -64,5 +79,27 @@ export default declare([_WidgetBase, _TemplatedMixin], {
     const pixelWidth = this.map.extent.getWidth() / this.map.width;
 
     return pixelTolerance * pixelWidth;
+  },
+
+  setFeatures(features) {
+    console.log('ProjectInfo:setFeatures', arguments);
+
+    if (this.detailsWidgets) {
+      this.detailsWidgets.forEach(widget => widget.destroy());
+      this.detailsWidgets = null;
+    }
+
+    if (features.length > 0) {
+      this.detailsWidgets = features.map(feature => {
+        return new Details({
+          feature,
+          fields: feature.fields,
+          displayField: feature.displayField,
+          config: this.config
+        }, domConstruct.create('div', {}, this.detailsContainer));
+      });
+    } else {
+      this.instructions.className = '';
+    }
   }
 });

@@ -1,10 +1,45 @@
+$padding: 14px;
+$border: solid 1px gray;
+
 .project-info {
+  margin-top: -$padding;
   h3 {
     font-size: 1.2em;
   }
   h3, p {
     margin-top: 0;
   }
+  .hidden {
+    display: none;
+    visibility: hidden;
+  }
+  .details {
+    border-bottom: $border;
+    margin-left: -$padding;
+    margin-right: -$padding;
+    .title {
+      cursor: pointer;
+      line-height: 40px;
+      font-weight: bold;
+      font-size: 16px;
+      background-color: #f0f0f0;
+      padding: 0 $padding;
+      border-bottom: $border;
+      &:hover {
+        background-color: white;
+      }
+    }
+    [data-dojo-attach-point='body'] {
+      overflow: hidden;
+      .padder {
+        padding: $padding / 2 $padding;
+      }
+      table td {
+        padding: 2px 2px 5px 2px;
+        &.alias {
+          padding-right: 5px;
+        }
+      }
+    }
+  }
 }
-
-/* add additional custom styles */

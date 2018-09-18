@@ -1,2 +1,3 @@
 // because babel outputs AMD as define rather than require
-require(['spec/SpecProjectInfo']);
+require(['tests/spec/SpecProjectInfo']);
+require(['tests/spec/SpecDetails']);

@@ -44,7 +44,10 @@ module.exports = function (grunt) {
           'themes/**/**.json',
           'themes/**/**.css',
           'themes/**/images/**',
-          'themes/**/nls/**'
+          'themes/**/nls/**',
+          'tests/*.js',
+          'tests/**/*.html',
+          'tests/data/**/**.*'
         ],
         dest: 'dist/',
         expand: true

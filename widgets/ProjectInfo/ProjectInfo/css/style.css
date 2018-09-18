@@ -1,9 +1,33 @@
-.project-info h3 {
-  font-size: 1.2em; }
-
-.project-info h3, .project-info p {
-  margin-top: 0; }
-
-/* add additional custom styles */
+.project-info {
+  margin-top: -14px; }
+  .project-info h3 {
+    font-size: 1.2em; }
+  .project-info h3, .project-info p {
+    margin-top: 0; }
+  .project-info .hidden {
+    display: none;
+    visibility: hidden; }
+  .project-info .details {
+    border-bottom: solid 1px gray;
+    margin-left: -14px;
+    margin-right: -14px; }
+    .project-info .details .title {
+      cursor: pointer;
+      line-height: 40px;
+      font-weight: bold;
+      font-size: 16px;
+      background-color: #f0f0f0;
+      padding: 0 14px;
+      border-bottom: solid 1px gray; }
+      .project-info .details .title:hover {
+        background-color: white; }
+    .project-info .details [data-dojo-attach-point='body'] {
+      overflow: hidden; }
+      .project-info .details [data-dojo-attach-point='body'] .padder {
+        padding: 7px 14px; }
+      .project-info .details [data-dojo-attach-point='body'] table td {
+        padding: 2px 2px 5px 2px; }
+        .project-info .details [data-dojo-attach-point='body'] table td.alias {
+          padding-right: 5px; }
 
 /*# sourceMappingURL=style.css.map */
