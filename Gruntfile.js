@@ -2,8 +2,10 @@ module.exports = function (grunt) {
   'use strict';
   require('load-grunt-tasks')(grunt);
 
-  var appDir = '/Users/stdavis/WebAppBuilderForArcGIS/server/apps/2';
-  var stemappDir = '/Users/stdavis/WebAppBuilderForArcGIS/client/stemapp';
+  const appDir = '/Users/stdavis/WebAppBuilderForArcGIS/server/apps/2';
+  const stemappDir = '/Users/stdavis/WebAppBuilderForArcGIS/client/stemapp';
+  const bumpFiles = ['package.json', 'package-lock.json'];
+
   grunt.initConfig({
     babel: {
       main: {
@@ -24,6 +26,13 @@ module.exports = function (grunt) {
         }]
       }
     },
+    bump: {
+      options: {
+        files: bumpFiles,
+        commitFiles: bumpFiles,
+        pushTo: 'origin'
+      }
+    },
     clean: {
       dist: {
         src: 'dist/*'
@@ -31,6 +40,19 @@ module.exports = function (grunt) {
     },
     connect: {
       uses_defaults: {} // eslint-disable-line camelcase
+    },
+    conventionalGithubReleaser: {
+      options: {
+        auth: {
+          type: 'oauth',
+          token: process.env.CONVENTIONAL_GITHUB_RELEASER_TOKEN
+        },
+        changelogOpts: {
+          preset: 'angular',
+          draft: true
+        }
+      },
+      main: {}
     },
     copy: {
       main: {
