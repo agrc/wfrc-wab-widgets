@@ -8,7 +8,21 @@ Web App Builder Widgets built for Wasatch Front Regional Council
 #### ProjectInfo
 This widget displays the attribute values for map features that the user has clicked on. Features are collected from all feature layers that have been added to the map. The value that is show in the title bar is the value of the display field as defined in the feature service. Field name aliases are also used if they are defined.
 
-Note: Popups should be removed from all feature layers within the web map to prevent the map popup from showing when clicking on features.
+Special Notes:  
+* Popups should be removed from all feature layers within the web map to prevent the map popup from showing when clicking on features.
+* `"openAtStart": true` should be added to the object related to this widget in `config.json` within the web application. For example:
+```json
+{
+  "name": "ProjectInfo",
+  "version": "0.0.1",
+  "IsController": false,
+  "uri": "widgets/ProjectInfo/Widget",
+  "config": "configs/ProjectInfo/config_widgets_ProjectInfo_Widget_20.json",
+  "index": 5,
+  "id": "widgets_ProjectInfo_Widget_20",
+  "openAtStart": true
+}
+```
 
 ##### Configuration
 `clickedPixelTolerance`  
