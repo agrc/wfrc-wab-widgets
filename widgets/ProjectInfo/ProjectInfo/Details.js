@@ -104,6 +104,12 @@ export default declare([_WidgetBase, _TemplatedMixin], {
   onTitleEnter() {
     console.log('Details:onTitleEnter', arguments);
 
+    this.highlight();
+  },
+
+  highlight() {
+    console.log('Details:highlight', arguments);
+
     this.feature.setSymbol(this.selectionSymbols[this.feature.geometry.type]);
   },
 
@@ -115,13 +121,19 @@ export default declare([_WidgetBase, _TemplatedMixin], {
     }
   },
 
+  expand() {
+    console.log('Details:expand', arguments);
+
+    coreFx.wipeIn({ node: this.body }).play();
+  },
+
   onTitleClick() {
     console.log('Details:onTitleClick', arguments);
 
     if (this.open) {
       coreFx.wipeOut({ node: this.body }).play();
     } else {
-      coreFx.wipeIn({ node: this.body }).play();
+      this.expand();
     }
 
     this.open = !this.open;

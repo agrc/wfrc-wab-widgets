@@ -81,6 +81,12 @@ export default declare([_WidgetBase, _TemplatedMixin], {
           config: this.config
         }, domConstruct.create('div', {}, this.detailsContainer));
       });
+
+      // if there's only one feature then set it to open automatically
+      if (features.length === 1) {
+        this.detailsWidgets[0].expand();
+        this.detailsWidgets[0].highlight();
+      }
     } else {
       this.instructions.className = '';
     }
