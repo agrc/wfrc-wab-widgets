@@ -6,8 +6,8 @@ $border: solid 1px gray;
   h3 {
     font-size: 1.2em;
   }
-  h3, p {
-    margin-top: 0;
+  h3 {
+    margin-top: $padding / 2;
   }
   .hidden {
     display: none;

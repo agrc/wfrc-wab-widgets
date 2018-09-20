@@ -2,8 +2,8 @@
   margin-top: -14px; }
   .project-info h3 {
     font-size: 1.2em; }
-  .project-info h3, .project-info p {
-    margin-top: 0; }
+  .project-info h3 {
+    margin-top: 7px; }
   .project-info .hidden {
     display: none;
     visibility: hidden; }
