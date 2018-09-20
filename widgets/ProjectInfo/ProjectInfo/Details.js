@@ -3,6 +3,9 @@ import _WidgetBase from 'dijit/_WidgetBase';
 import coreFx from 'dojo/fx';
 import declare from 'dojo/_base/declare';
 import domConstruct from 'dojo/dom-construct';
+import SimpleFillSymbol from 'esri/symbols/SimpleFillSymbol';
+import SimpleLineSymbol from 'esri/symbols/SimpleLineSymbol';
+import SimpleMarkerSymbol from 'esri/symbols/SimpleMarkerSymbol';
 import template from 'dojo/text!./Details.html';
 
 
@@ -11,6 +14,8 @@ export default declare([_WidgetBase, _TemplatedMixin], {
   templateString: template,
   open: false,
   aliasValuePairs: null,
+  selectionSymbols: null,
+  originalSymbol: null,
 
 
   // properties passed in via the constructor
@@ -39,7 +44,30 @@ export default declare([_WidgetBase, _TemplatedMixin], {
     this.aliasValuePairs = this.getAliasValuePairs(
       props.feature.attributes, props.fields, props.config.excludeFields, props.displayField);
 
+    this.originalSymbol = props.feature.symbol;
+
     this.inherited(arguments);
+  },
+
+  postMixInProperties() {
+    console.log('Details:postMixInProperties', arguments);
+
+    this.selectionSymbols = {
+      point: new SimpleMarkerSymbol({
+        color: this.config.selectionColor
+      }),
+      polyline: new SimpleLineSymbol({
+        color: this.config.selectionColor,
+        width: 6,
+        style: 'esriSLSSolid',
+        type: 'esriSLS'
+      }),
+      polygon: new SimpleFillSymbol({
+        type: 'esriSFS',
+        style: 'esriSFSSolid',
+        color: this.config.selectionColor
+      })
+    };
   },
 
   getAliasValuePairs(attributes, fields, excludeFields, displayField) {
@@ -73,6 +101,20 @@ export default declare([_WidgetBase, _TemplatedMixin], {
     this.inherited(arguments);
   },
 
+  onTitleEnter() {
+    console.log('Details:onTitleEnter', arguments);
+
+    this.feature.setSymbol(this.selectionSymbols[this.feature.geometry.type]);
+  },
+
+  onTitleLeave() {
+    console.log('Details:onTitleLeave', arguments);
+
+    if (!this.open) {
+      this.feature.setSymbol(this.originalSymbol);
+    }
+  },
+
   onTitleClick() {
     console.log('Details:onTitleClick', arguments);
 
@@ -83,5 +125,13 @@ export default declare([_WidgetBase, _TemplatedMixin], {
     }
 
     this.open = !this.open;
+  },
+
+  destroy() {
+    console.log('Details:destroy', arguments);
+
+    this.feature.setSymbol(this.originalSymbol);
+
+    this.inherited(arguments);
   }
 });

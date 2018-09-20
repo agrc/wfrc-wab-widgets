@@ -8,6 +8,7 @@ import fieldsJson from 'dojo/text!tests/data/fields.json';
 describe('Details', () => {
   let testWidget;
   const feature = JSON.parse(featureJson);
+  feature.setSymbol = () => {};
   const fields = JSON.parse(fieldsJson);
 
   beforeEach(() => {
