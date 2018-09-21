@@ -1,0 +1,40 @@
+<div>
+  <button data-dojo-attach-event="click: toggleNewCommentForm">Leave Comment</button>
+  <div data-dojo-attach-point="newCommentForm" class="form" style="display: none;">
+    <div class="form-row">
+      Name
+      <span class="pull-right"></span>
+      <br>
+      <input type="text" data-dojo-attach-point="PersonName" maxlength="50" />
+    </div>
+
+    <div class="form-row">
+      Organization
+      <span class="pull-right"></span>
+      <br>
+      <input type="text" data-dojo-attach-point="PersonOrg" maxlength="50"/>
+    </div>
+
+    <div class="form-row">
+      Contact Information (email/phone)
+      <span class="pull-right"></span>
+      <br>
+      <input type="text" data-dojo-attach-point="PersonCont" maxlength="50"/>
+    </div>
+
+    <div class="form-row">
+      Comment
+      <span class="pull-right"></span>
+      <br>
+      <textarea data-dojo-attach-point="Comment" maxlength="1000"></textarea>
+    </div>
+
+    <span data-dojo-attach-point='errorMessage' class='error'></span>
+
+    <button data-dojo-attach-event='click: submitComment'>Submit</button>
+    <button data-dojo-attach-event='click: clearForm'>Cancel</button>
+  </div>
+
+  <h2>Public Comments</h2>
+  <div data-dojo-attach-point="commentsContainer"></div>
+</div>

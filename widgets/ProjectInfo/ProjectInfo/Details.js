@@ -1,5 +1,6 @@
 import _TemplatedMixin from 'dijit/_TemplatedMixin';
 import _WidgetBase from 'dijit/_WidgetBase';
+import Comments from './Comments';
 import coreFx from 'dojo/fx';
 import declare from 'dojo/_base/declare';
 import domConstruct from 'dojo/dom-construct';
@@ -9,6 +10,7 @@ import SimpleMarkerSymbol from 'esri/symbols/SimpleMarkerSymbol';
 import template from 'dojo/text!./Details.html';
 
 
+const GLOBALID_FIELD_NAME = 'GlobalID';
 export default declare([_WidgetBase, _TemplatedMixin], {
   baseClass: 'details',
   templateString: template,
@@ -98,7 +100,20 @@ export default declare([_WidgetBase, _TemplatedMixin], {
       }, tr);
     });
 
+    if (this.shouldDisplayComments(this.fields)) {
+      this.own(new Comments({
+        globalid: this.feature.attributes[GLOBALID_FIELD_NAME],
+        config: this.config
+      }, this.commentsContainer));
+    }
+
     this.inherited(arguments);
+  },
+
+  shouldDisplayComments(fields) {
+    console.log('Details:shouldDisplayComments', arguments);
+
+    return this.config.commentsEnabled && fields.some(fieldInfo => fieldInfo.name === GLOBALID_FIELD_NAME);
   },
 
   onTitleEnter() {

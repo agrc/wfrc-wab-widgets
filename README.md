@@ -8,31 +8,32 @@ Web App Builder Widgets built for Wasatch Front Regional Council
 #### ProjectInfo
 This widget displays the attribute values for map features that the user has clicked on. Features are collected from all feature layers that have been added to the map. The value that is show in the title bar is the value of the display field as defined in the feature service. Field name aliases are also used if they are defined.
 
-Special Notes:  
+Notes:  
 * Popups should be removed from all feature layers within the web map to prevent the map popup from showing when clicking on features.
-* `"openAtStart": true` should be added to the object related to this widget in `config.json` within the web application. For example:
-```json
-{
-  "name": "ProjectInfo",
-  "version": "0.0.1",
-  "IsController": false,
-  "uri": "widgets/ProjectInfo/Widget",
-  "config": "configs/ProjectInfo/config_widgets_ProjectInfo_Widget_20.json",
-  "index": 5,
-  "id": "widgets_ProjectInfo_Widget_20",
-  "openAtStart": true
-}
-```
 
 ##### Configuration
-`clickedPixelTolerance`  
+`clickedPixelTolerance` - `[number]`  
 The click tolerance (in pixels) for hitting features when clicking on the map. Defaults to 6.
 
-`selectionColor`  
+`selectionColor` - `[number[]]`  
 The color of the symbol used to display features that have been clicked on. Format is 1-255 rgba. Defaults to `[255, 255, 0, 230]`.
 
-`excludeFields`  
+`excludeFields` - `[string[]]`  
 This is a list of fields that should be excluded from the widget. Defaults to `["OBJECTID", "GlobalID"]`.
+
+#### Comments
+This widget is embedded within the ProjectInfo widget. No need to copy additional files.
+
+Notes:  
+This widget will only be displayed for features with a `GlobalID` field.
+
+##### Configuration
+`commentsEnabled` [boolean]  
+This controls weather the comments widget is displayed or not. Defaults to `true`.
+
+`newCommentsOpenUntil` [string]  
+The user will be able to post new comments until this date. Defaults to `"9999-01-31T00:00:00.000Z"`.
+
 
 ### Development
 [Esri Yeoman Generators](https://github.com/Esri/generator-esri-appbuilder-js)  

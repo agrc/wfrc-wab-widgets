@@ -37,19 +37,30 @@
 
       'dojo/domReady!'
     ], function (Details, featureJson, fieldsJson) {
+      const feature = JSON.parse(featureJson);
+      feature.setSymbol = () => {};
+
       const details = new Details({
-        feature: JSON.parse(featureJson),
+        feature,
         fields: JSON.parse(fieldsJson),
         displayField: 'ProjName',
-        config: { excludeFields: ['OBJECTID', 'GlobalID'] }
+        config: {
+          excludeFields: ['OBJECTID', 'GlobalID'],
+          commentsEnabled: true,
+          newCommentsOpenUntil: '9999-01-31T00:00:00.000Z',
+          "commentsTableUrl": "https://gis.wfrc.org/arcgis/rest/services/RTP/RTP_2019_2050_DraftPhased/FeatureServer/14"
+        }
       }, document.getElementById('testDiv'));
       details.startup();
+      details.expand();
 
       const details2 = new Details({
-        feature: JSON.parse(featureJson),
+        feature,
         fields: JSON.parse(fieldsJson),
         displayField: 'ProjName',
-        config: { excludeFields: ['OBJECTID', 'GlobalID'] }
+        config: {
+          excludeFields: ['OBJECTID', 'GlobalID']
+        }
       }, document.getElementById('testDiv2'));
       details2.startup();
     });

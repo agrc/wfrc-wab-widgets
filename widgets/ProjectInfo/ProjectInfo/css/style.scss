@@ -40,6 +40,24 @@ $border: solid 1px gray;
           padding-right: 5px;
         }
       }
+
+      .comments {
+        .form {
+          .form-row {
+            margin-top: $padding / 2;
+            .pull-right {
+              float: right;
+            }
+            input, textarea {
+              width: calc(100% - 14px);
+              padding: 5px;
+            }
+            textarea {
+              height: 10em;
+            }
+          }
+        }
+      }
     }
   }
 }

@@ -16,7 +16,10 @@ describe('Details', () => {
       feature,
       fields,
       displayField: 'ProjName',
-      config: { excludeFields: ['OBJECTID', 'GlobalID'] }
+      config: {
+        excludeFields: ['OBJECTID', 'GlobalID'],
+        commentsEnabled: true
+      }
     }, domConstruct.create('div', {}, document.body));
   });
 
@@ -36,6 +39,25 @@ describe('Details', () => {
       expect(pairs.length).toBe(7);
 
       expect(pairs).toContain(['Project From', 'Mountain View Corridor']);
+    });
+  });
+
+  describe('shouldDisplayComments', () => {
+    it('returns true/false based on the presence of the global id field', () => {
+      expect(testWidget.shouldDisplayComments(fields)).toBe(true);
+      expect(testWidget.shouldDisplayComments([{
+        name: 'MyField'
+      }])).toBe(false);
+    });
+
+    it('honors config values', () => {
+      testWidget.config.commentsEnabled = true;
+
+      expect(testWidget.shouldDisplayComments(fields)).toBe(true);
+
+      testWidget.config.commentsEnabled = false;
+
+      expect(testWidget.shouldDisplayComments(fields)).toBe(false);
     });
   });
 });

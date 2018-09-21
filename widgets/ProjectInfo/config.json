@@ -1,5 +1,8 @@
 {
   "clickPixelTolerance": 6,
   "selectionColor": [255, 255, 0, 230],
-  "excludeFields": ["OBJECTID", "GlobalID"]
+  "excludeFields": ["OBJECTID", "GlobalID"],
+  "commentsEnabled": true,
+  "newCommentsOpenUntil": "9999-01-31T00:00:00.000Z",
+  "commentsTableUrl": "https://gis.wfrc.org/arcgis/rest/services/RTP/RTP_2019_2050_DraftPhased/FeatureServer/14"
 }
