@@ -22,10 +22,7 @@ The color of the symbol used to display features that have been clicked on. Form
 This is a list of fields that should be excluded from the widget. Defaults to `["OBJECTID", "GlobalID"]`.
 
 #### Comments
-This widget is embedded within the ProjectInfo widget. No need to copy additional files.
-
-Notes:  
-This widget will only be displayed for features with a `GlobalID` field.
+This widget is embedded within the ProjectInfo widget. No need to copy additional files. This widget will only be displayed for features with a `GlobalID` field.
 
 ##### Configuration
 `commentsEnabled` [boolean]  
