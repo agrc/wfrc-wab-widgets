@@ -1,0 +1,25 @@
+{
+  "name": "BetterAbout",
+  "label": "Better About",
+  "2D": true,
+  "3D": false,
+  "platform": "HTML",
+  "version": "0.2.0",
+  "wabVersion": "2.7",
+  "author": "Scott Davis <stdavis@utah.gov>",
+  "description": "A wrapper around the out-of-the-box About widget that adds a few niceties.",
+  "copyright": "",
+  "license": "MIT",
+  "properties": {
+    "inPanel": true,
+    "hasLocale": false,
+    "hasStyle": true,
+    "hasConfig": false,
+    "hasUIFile": true,
+    "hasSettingPage": false,
+    "hasSettingUIFile": false,
+    "hasSettingLocale": false,
+    "hasSettingStyle": false,
+    "IsController": false
+  }
+}

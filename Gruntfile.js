@@ -29,7 +29,7 @@ module.exports = function (grunt) {
     bump: {
       options: {
         files: bumpFiles,
-        commitFiles: bumpFiles.concat('ProjectInfo.zip'),
+        commitFiles: bumpFiles.concat(['ProjectInfo.zip', 'BetterAbout.zip']),
         pushTo: 'origin'
       }
     },
@@ -45,6 +45,17 @@ module.exports = function (grunt) {
         },
         files: [{
           src: 'widgets/ProjectInfo/**/**.*',
+          dest: './',
+          cwd: 'dist/',
+          expand: true
+        }]
+      },
+      BetterAbout: {
+        options: {
+          archive: 'BetterAbout.zip'
+        },
+        files: [{
+          src: 'widgets/BetterAbout/**/**.*',
           dest: './',
           cwd: 'dist/',
           expand: true
