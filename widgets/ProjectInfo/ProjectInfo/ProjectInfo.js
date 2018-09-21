@@ -14,6 +14,8 @@ export default declare([_WidgetBase, _TemplatedMixin], {
   featureLayers: null,
 
   postMixInProperties() {
+    console.log('ProjectInfo:postMixInProperties', arguments);
+
     this.nls = strings;
 
     this.inherited(arguments);
