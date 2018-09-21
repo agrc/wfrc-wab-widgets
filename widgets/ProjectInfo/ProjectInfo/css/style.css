@@ -29,12 +29,14 @@
         padding: 2px 2px 5px 2px; }
         .project-info .details [data-dojo-attach-point='body'] table td.alias {
           padding-right: 5px; }
+      .project-info .details [data-dojo-attach-point='body'] .comments .error {
+        color: darkred; }
       .project-info .details [data-dojo-attach-point='body'] .comments .form .form-row {
         margin-top: 7px; }
         .project-info .details [data-dojo-attach-point='body'] .comments .form .form-row .pull-right {
           float: right; }
         .project-info .details [data-dojo-attach-point='body'] .comments .form .form-row input, .project-info .details [data-dojo-attach-point='body'] .comments .form .form-row textarea {
-          width: calc(100% - 14px);
+          width: 100%;
           padding: 5px; }
         .project-info .details [data-dojo-attach-point='body'] .comments .form .form-row textarea {
           height: 10em; }

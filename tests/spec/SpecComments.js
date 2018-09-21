@@ -9,7 +9,8 @@ describe('Comments', () => {
 
   beforeEach(() => {
     testWidget = new Comments({
-      fields: JSON.parse(fieldsJson)
+      fields: JSON.parse(fieldsJson),
+      config: { commentsTableUrl: 'blah' }
     }, domConstruct.create('div', {}, window.body));
     testWidget.startup();
   });

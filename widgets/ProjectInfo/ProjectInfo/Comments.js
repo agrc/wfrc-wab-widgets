@@ -2,7 +2,9 @@ import _TemplatedMixin from 'dijit/_TemplatedMixin';
 import _WidgetBase from 'dijit/_WidgetBase';
 import coreFx from 'dojo/fx';
 import declare from 'dojo/_base/declare';
+import domConstruct from 'dojo/dom-construct';
 import esriRequest from 'esri/request';
+import ExistingComment from './ExistingComment';
 import template from 'dojo/text!./Comments.html';
 
 
@@ -34,7 +36,40 @@ export default declare([_WidgetBase, _TemplatedMixin], {
       input.parentElement.getElementsByTagName('span')[0].textContent = input.maxLength;
     });
 
+    this.loadExistingComments();
+
     this.inherited(arguments);
+  },
+
+  loadExistingComments() {
+    console.log('Comments:loadExistingComments', arguments);
+
+    const onSuccess = response => {
+      response.features
+        // show newest comments first
+        .sort((feature1, feature2) => (feature1.attributes.CommentDT < feature2.attributes.CommentDT) ? 1 : -1)
+        .forEach(feature => this.addComment(feature.attributes));
+    };
+    const onFailure = error => {
+      this.loadExistingErrorMessage.textContent = `Failed to load existing comments: ${error.message}`;
+    };
+
+    esriRequest({
+      url: `${this.config.commentsTableUrl}/query`,
+      content: {
+        f: 'json',
+        where: `GUID = '${this.globalid}'`,
+        outFields: '*'
+      },
+      handleAs: 'json'
+    }).then(onSuccess, onFailure);
+  },
+
+  addComment(attributes) {
+    console.log('Comments:addComment', arguments);
+
+    const existingComment = new ExistingComment(attributes, domConstruct.create('div', {}, this.commentsContainer));
+    existingComment.startup();
   },
 
   getInputs() {
@@ -69,7 +104,7 @@ export default declare([_WidgetBase, _TemplatedMixin], {
   submitComment() {
     console.log('Comments:submitComment', arguments);
 
-    this.errorMessage.textContent = '';
+    this.submitErrorMessage.textContent = '';
 
     const attributes = {
       CommentDT: new Date(),
@@ -83,7 +118,7 @@ export default declare([_WidgetBase, _TemplatedMixin], {
       const result = response.addResults[0];
 
       if (result.success) {
-        this.addNewComment(attributes);
+        this.addComment(attributes);
         this.clearForm();
       } else {
         this.onFailure({ message: result.error.description });
@@ -91,7 +126,7 @@ export default declare([_WidgetBase, _TemplatedMixin], {
     };
 
     const onFailure = error => {
-      this.errorMessage.textContent = error.message;
+      this.submitErrorMessage.textContent = error.message;
     };
 
     esriRequest({
@@ -104,12 +139,6 @@ export default declare([_WidgetBase, _TemplatedMixin], {
       },
       handleAs: 'json'
     }, { usePost: true }).then(onSuccess, onFailure);
-  },
-
-  addNewComment(attributes) {
-    console.log('Comments:addNewComment', arguments);
-
-    console.log(attributes);
   },
 
   clearForm() {

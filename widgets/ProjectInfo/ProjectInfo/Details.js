@@ -18,6 +18,7 @@ export default declare([_WidgetBase, _TemplatedMixin], {
   aliasValuePairs: null,
   selectionSymbols: null,
   originalSymbol: null,
+  commentsShown: false,
 
 
   // properties passed in via the constructor
@@ -100,13 +101,6 @@ export default declare([_WidgetBase, _TemplatedMixin], {
       }, tr);
     });
 
-    if (this.shouldDisplayComments(this.fields)) {
-      this.own(new Comments({
-        globalid: this.feature.attributes[GLOBALID_FIELD_NAME],
-        config: this.config
-      }, this.commentsContainer));
-    }
-
     this.inherited(arguments);
   },
 
@@ -138,6 +132,15 @@ export default declare([_WidgetBase, _TemplatedMixin], {
 
   expand() {
     console.log('Details:expand', arguments);
+
+    if (this.shouldDisplayComments(this.fields) && !this.commentsShown) {
+      this.own(new Comments({
+        globalid: this.feature.attributes[GLOBALID_FIELD_NAME],
+        config: this.config
+      }, this.commentsContainer));
+
+      this.commentsShown = true;
+    }
 
     coreFx.wipeIn({ node: this.body }).play();
   },

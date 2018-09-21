@@ -29,12 +29,13 @@
       <textarea data-dojo-attach-point="Comment" maxlength="1000"></textarea>
     </div>
 
-    <span data-dojo-attach-point='errorMessage' class='error'></span>
+    <span data-dojo-attach-point="submitErrorMessage" class="error"></span>
 
-    <button data-dojo-attach-event='click: submitComment'>Submit</button>
-    <button data-dojo-attach-event='click: clearForm'>Cancel</button>
+    <button data-dojo-attach-event="click: submitComment">Submit</button>
+    <button data-dojo-attach-event="click: clearForm">Cancel</button>
   </div>
 
   <h2>Public Comments</h2>
+  <span data-dojo-attach-point="loadExistingErrorMessage" class="error"></span>
   <div data-dojo-attach-point="commentsContainer"></div>
 </div>

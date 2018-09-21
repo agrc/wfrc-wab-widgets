@@ -42,6 +42,9 @@ $border: solid 1px gray;
       }
 
       .comments {
+        .error {
+          color: darkred;
+        }
         .form {
           .form-row {
             margin-top: $padding / 2;
@@ -49,7 +52,7 @@ $border: solid 1px gray;
               float: right;
             }
             input, textarea {
-              width: calc(100% - 14px);
+              width: 100%;
               padding: 5px;
             }
             textarea {
