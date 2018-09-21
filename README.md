@@ -34,6 +34,9 @@ This controls weather the comments widget is displayed or not. Defaults to `true
 `newCommentsOpenUntil` [string]  
 The user will be able to post new comments until this date. Defaults to `"9999-01-31T00:00:00.000Z"`.
 
+#### BetterAbout
+This widget is a thin wrapper around the out-of-the-box About widget. The only thing that it adds is a click event on all of the images in the content of the widget that opens the images in a larger dialog box. Otherwise, it should behave exactly the same as the About widget.
+
 
 ### Development
 [Esri Yeoman Generators](https://github.com/Esri/generator-esri-appbuilder-js)  

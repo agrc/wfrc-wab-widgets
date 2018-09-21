@@ -20,7 +20,8 @@ module.exports = function (grunt) {
             'themes/**/*.js',
             'themes/**/**/*.js',
             'themes/!**/**/nls/*.js',
-            'tests/spec/**/*.js'
+            'tests/spec/**/*.js',
+            '!widgets/BetterAbout/About/**/*.js'
           ],
           dest: 'dist/'
         }]
@@ -104,7 +105,7 @@ module.exports = function (grunt) {
         configFile: '.eslintrc'
       },
       main: {
-        src: ['Gruntfile.js', 'widgets/**/*.js']
+        src: ['Gruntfile.js', 'widgets/**/*.js', '!widgets/BetterAbout/About/**/*.js']
       }
     },
     jasmine: {
@@ -130,7 +131,7 @@ module.exports = function (grunt) {
         },
         files: [{
           expand: true,
-          src: ['widgets/**/*.scss'],
+          src: ['widgets/**/*.scss', '!widgets/BetterAbout/About/**/*.*'],
           rename: function (dest, src) {
             return src.replace('scss', 'css');
           }

@@ -12,14 +12,6 @@
   "license": "MIT",
   "properties": {
     "inPanel": true,
-    "hasLocale": false,
-    "hasStyle": true,
-    "hasConfig": false,
-    "hasUIFile": true,
-    "hasSettingPage": false,
-    "hasSettingUIFile": false,
-    "hasSettingLocale": false,
-    "hasSettingStyle": false,
-    "IsController": false
+    "hasConfig": true
   }
 }

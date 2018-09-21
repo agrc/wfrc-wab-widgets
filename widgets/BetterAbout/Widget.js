@@ -1,15 +1,22 @@
 import declare from 'dojo/_base/declare';
-import BaseWidget from 'jimu/BaseWidget';
-import BetterAbout from './BetterAbout/BetterAbout';
+import About from './About/Widget';
+import utilities from './utilities';
 
 
-export default declare([BaseWidget], {
-  mainWidget: null,
+export default declare([About], {
+  constructor() {
+    console.log('BetterAbout:constructor', arguments);
 
-  postCreate() {
-    this.mainWidget = new BetterAbout({
-      config: this.config,
-      map: this.map
-    }, this.widgetContainer);
+    this.baseClass = `${this.baseClass} better-about`;
+
+    this.inherited(arguments);
+  },
+
+  onOpen() {
+    console.log('BetterAbout:onOpen', arguments);
+
+    this.inherited(arguments);
+
+    utilities.dialogitizeImages(this.domNode);
   }
 });
