@@ -1,5 +1,13 @@
+import declare from 'dojo/_base/declare';
+import _TemplatedMixin from 'dijit/_TemplatedMixin';
+import _WidgetBase from 'dijit/_WidgetBase';
 import Dialog from 'dijit/Dialog';
+import template from 'dojo/text!./DialogContent.html';
 
+
+const DialogContent = declare([_WidgetBase, _TemplatedMixin], {
+  templateString: template
+});
 
 export default {
   dialogitizeImages(containerNode) {
@@ -8,7 +16,11 @@ export default {
     const getShowDialogFunction = (url) => {
       return () => {
         const dialog = new Dialog({
-          content: `<img src=${url} />`,
+          closable: true,
+          content: new DialogContent({
+            url,
+            closeDialog: () => dialog.destroy()
+          }),
           draggable: false,
           baseClass: 'better-about-dialog',
           onShow: () => {

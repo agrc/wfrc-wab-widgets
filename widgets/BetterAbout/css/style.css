@@ -14,4 +14,14 @@
   max-width: 100%;
   max-height: 100%; }
 
+.better-about-dialog span {
+  position: absolute;
+  right: 7px;
+  top: 7px;
+  font-size: 2em;
+  color: lightgray;
+  cursor: pointer; }
+  .better-about-dialog span:hover {
+    color: gray; }
+
 /*# sourceMappingURL=style.css.map */
