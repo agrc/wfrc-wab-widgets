@@ -5,7 +5,7 @@
   "3D": false,
   "platform": "HTML",
   "version": "0.2.0",
-  "wabVersion": "2.7",
+  "wabVersion": "2.9",
   "author": "Scott Davis <stdavis@utah.gov>",
   "description": "A wrapper around the out-of-the-box About widget that adds a few niceties.",
   "copyright": "",
