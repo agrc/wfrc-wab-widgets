@@ -4,7 +4,7 @@ module.exports = function (grunt) {
 
   const appDir = '/Users/stdavis/WebAppBuilderForArcGIS/server/apps/2';
   const stemappDir = '/Users/stdavis/WebAppBuilderForArcGIS/client/stemapp';
-  const bumpFiles = ['package.json', 'package-lock.json', 'widgets/**/manifest.json'];
+  const bumpFiles = ['package.json', 'package-lock.json', 'widgets/*/manifest.json'];
 
   grunt.initConfig({
     babel: {
