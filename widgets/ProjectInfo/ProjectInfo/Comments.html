@@ -33,11 +33,14 @@
     <span data-dojo-attach-point="submitErrorMessage" class="error"></span>
 
     <button data-dojo-attach-event="click: submitComment"
-      data-dojo-attach-point='submitBtn' disabled>Submit</button>
+      data-dojo-attach-point="submitBtn" disabled>Submit</button>
     <button data-dojo-attach-event="click: clearForm">Cancel</button> <span class="pull-right">*Required</span>
   </div>
 
-  <h2>Public Comments</h2>
+  <h2>Public Comments
+    (<span data-dojo-attach-point="numComments"></span>)
+    <button class="pull-right" data-dojo-attach-event="click: toggleExistingComments">show</button>
+  </h2>
   <span data-dojo-attach-point="loadExistingErrorMessage" class="error"></span>
-  <div data-dojo-attach-point="commentsContainer"></div>
+  <div data-dojo-attach-point="commentsContainer" style="display: none;"></div>
 </div>

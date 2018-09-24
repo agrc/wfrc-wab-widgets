@@ -14,6 +14,7 @@ $border: solid 1px gray;
     visibility: hidden;
   }
   .details {
+    font-size: 14px;
     border-bottom: $border;
     margin-left: -$padding;
     margin-right: -$padding;
@@ -45,10 +46,10 @@ $border: solid 1px gray;
         .error {
           color: darkred;
         }
+        .pull-right {
+          float: right;
+        }
         .form {
-          .pull-right {
-            float: right;
-          }
           .form-row {
             margin-top: $padding / 2;
             input, textarea {
@@ -58,6 +59,12 @@ $border: solid 1px gray;
             textarea {
               height: 10em;
             }
+          }
+        }
+        [data-dojo-attach-point='commentsContainer'] {
+          font-size: 12px;
+          hr:first-child {
+            margin-top: 0;
           }
         }
       }

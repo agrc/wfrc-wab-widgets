@@ -49,6 +49,8 @@ export default declare([_WidgetBase, _TemplatedMixin], {
         // show newest comments first
         .sort((feature1, feature2) => (feature1.attributes.CommentDT < feature2.attributes.CommentDT) ? 1 : -1)
         .forEach(feature => this.addComment(feature.attributes));
+
+      this.numComments.textContent = response.features.length;
     };
     const onFailure = error => {
       this.loadExistingErrorMessage.textContent = `Failed to load existing comments: ${error.message}`;
@@ -102,6 +104,18 @@ export default declare([_WidgetBase, _TemplatedMixin], {
     }
 
     this.newCommentFormOpen = !this.newCommentFormOpen;
+  },
+
+  toggleExistingComments(event) {
+    console.log('Comment:toggleExistingComments', arguments);
+
+    if (event.target.textContent === 'show') {
+      coreFx.wipeIn({ node: this.commentsContainer }).play();
+      event.target.textContent = 'hide';
+    } else {
+      coreFx.wipeOut({ node: this.commentsContainer }).play();
+      event.target.textContent = 'show';
+    }
   },
 
   submitComment() {
