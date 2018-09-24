@@ -65,10 +65,11 @@ export default declare([_WidgetBase, _TemplatedMixin], {
     }).then(onSuccess, onFailure);
   },
 
-  addComment(attributes) {
+  addComment(attributes, top = false) {
     console.log('Comments:addComment', arguments);
 
-    const existingComment = new ExistingComment(attributes, domConstruct.create('div', {}, this.commentsContainer));
+    const existingComment = new ExistingComment(attributes,
+      domConstruct.create('div', {}, this.commentsContainer, (top) ? 'first' : 'last'));
     existingComment.startup();
   },
 
@@ -120,7 +121,7 @@ export default declare([_WidgetBase, _TemplatedMixin], {
       const result = response.addResults[0];
 
       if (result.success) {
-        this.addComment(attributes);
+        this.addComment(attributes, true);
         this.clearForm();
       } else {
         this.onFailure({ message: result.error.description });
