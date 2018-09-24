@@ -1,5 +1,6 @@
 <div>
   <button data-dojo-attach-event="click: toggleNewCommentForm">Leave Comment</button>
+
   <div data-dojo-attach-point="newCommentForm" class="form" style="display: none;">
     <div class="form-row">
       Name
@@ -23,7 +24,7 @@
     </div>
 
     <div class="form-row">
-      Comment
+      Comment*
       <span class="pull-right"></span>
       <br>
       <textarea data-dojo-attach-point="Comment" maxlength="1000"></textarea>
@@ -31,8 +32,9 @@
 
     <span data-dojo-attach-point="submitErrorMessage" class="error"></span>
 
-    <button data-dojo-attach-event="click: submitComment">Submit</button>
-    <button data-dojo-attach-event="click: clearForm">Cancel</button>
+    <button data-dojo-attach-event="click: submitComment"
+      data-dojo-attach-point='submitBtn' disabled>Submit</button>
+    <button data-dojo-attach-event="click: clearForm">Cancel</button> <span class="pull-right">*Required</span>
   </div>
 
   <h2>Public Comments</h2>

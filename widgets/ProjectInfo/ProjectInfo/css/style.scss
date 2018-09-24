@@ -46,11 +46,11 @@ $border: solid 1px gray;
           color: darkred;
         }
         .form {
+          .pull-right {
+            float: right;
+          }
           .form-row {
             margin-top: $padding / 2;
-            .pull-right {
-              float: right;
-            }
             input, textarea {
               width: 100%;
               padding: 5px;

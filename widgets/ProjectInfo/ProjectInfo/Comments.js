@@ -87,6 +87,8 @@ export default declare([_WidgetBase, _TemplatedMixin], {
     const input = event.target;
     const span = input.parentElement.getElementsByTagName('span')[0];
     span.textContent = parseInt(input.maxLength, 10) - input.value.length;
+
+    this.submitBtn.disabled = (this.Comment.value.length === 0);
   },
 
   toggleNewCommentForm() {
