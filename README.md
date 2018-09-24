@@ -55,3 +55,4 @@ Any changes you make to widget files are automatically copied to your web app bu
 ### Cutting a new release
 1. `grunt release:<bumpType>`
 1. Go to https://github.com/agrc/wfrc-wab-widgets/releases and finalize the newly created draft release.
+  - Remember to attach the widget zip files in the root of the project as binaries.
