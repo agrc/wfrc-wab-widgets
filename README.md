@@ -37,6 +37,11 @@ The user will be able to post new comments until this date. Defaults to `"9999-0
 #### BetterAbout
 This widget is a thin wrapper around the out-of-the-box About widget. The only thing that it adds is a click event on all of the images in the content of the widget that opens the images in a larger dialog box. Otherwise, it should behave exactly the same as the About widget.
 
+##### To update the About widget files
+1. Copy the About widget into `widgets/BetterAbout/About`.
+1. Move `widgets/BetterAbout/About/nls` and `widgets/BetterAbout/About/setting/nls` to `widgets/BetterAbout` and `widgets/BetterAbout/settings` respectively.
+1. Move `widgets/BetterAbout/About/Widget.html` and `widgets/BetterAbout/About/setting/Setting.html` to `widgets/BetterAbout` and `widgets/BetterAbout/settings` respectively.
+
 
 ### Development
 [Esri Yeoman Generators](https://github.com/Esri/generator-esri-appbuilder-js)  
