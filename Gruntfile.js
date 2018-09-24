@@ -193,7 +193,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('release', function (bumpType) {
     grunt.task.run('test');
-    grunt.task.run(`bump-only:${bumpType}`);
+    grunt.task.run(`bump-only:${bumpType || 'patch'}`);
     grunt.task.run(['copy', 'compress', 'bump-commit', 'conventionalGithubReleaser']);
   });
 };
