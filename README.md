@@ -51,3 +51,7 @@ This widget is a thin wrapper around the out-of-the-box About widget. The only t
 1. Go to [http://<your machine name>:3344/webappbuilder/](http://<your machine name>:3344/webappbuilder/)
 
 Any changes you make to widget files are automatically copied to your web app builder installation and the test application located at [http://<your machine name>:3344/webappbuilder/apps/2/](http://<your machine name>:3344/webappbuilder/apps/2/) (this is configurable in `Gruntfile.js`).
+
+#### Cutting a new release
+1. `grunt release:<bumpType>`
+1. Go to https://github.com/agrc/wfrc-wab-widgets/releases and finalize the newly created draft release.
