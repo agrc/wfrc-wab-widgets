@@ -73,6 +73,8 @@ export default declare([_WidgetBase, _TemplatedMixin], {
     const existingComment = new ExistingComment(attributes,
       domConstruct.create('div', {}, this.commentsContainer, (top) ? 'first' : 'last'));
     existingComment.startup();
+
+    this.numComments.textContent = parseInt(this.numComments.textContent, 10) + 1;
   },
 
   getInputs() {

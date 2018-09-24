@@ -18,4 +18,20 @@ describe('Comments', () => {
   it('creates a valid object', () => {
     expect(testWidget).toEqual(jasmine.any(Comments));
   });
+
+  describe('addComment', () => {
+    it('adds a new ExistingComment widget', () => {
+      testWidget.addComment({ Comment: 'test' });
+
+      expect(testWidget.commentsContainer.children.length).toBe(1);
+    });
+
+    it('increments the comment count', () => {
+      testWidget.numComments.textContent = 0;
+      testWidget.addComment({ Comment: 'test' });
+      testWidget.addComment({ Comment: 'test' });
+
+      expect(testWidget.numComments.textContent).toBe('2');
+    });
+  });
 });
