@@ -4,7 +4,7 @@
   "2D": true,
   "3D": false,
   "platform": "HTML",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "wabVersion": "2.9",
   "author": "Scott Davis <stdavis@utah.gov>",
   "description": "A identify widget for displaying basic information about a project or projects.",
