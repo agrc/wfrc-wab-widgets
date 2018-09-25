@@ -30,7 +30,7 @@ module.exports = function (grunt) {
     bump: {
       options: {
         files: bumpFiles,
-        commitFiles: bumpFiles.concat(['ProjectInfo.zip', 'BetterAbout.zip']),
+        commitFiles: bumpFiles.concat(['ProjectInfo.zip', 'BetterAbout.zip', 'URLParams.zip']),
         pushTo: 'origin'
       }
     },
@@ -40,6 +40,17 @@ module.exports = function (grunt) {
       }
     },
     compress: {
+      BetterAbout: {
+        options: {
+          archive: 'BetterAbout.zip'
+        },
+        files: [{
+          src: 'widgets/BetterAbout/**/**.*',
+          dest: './',
+          cwd: 'dist/',
+          expand: true
+        }]
+      },
       ProjectInfo: {
         options: {
           archive: 'ProjectInfo.zip'
@@ -51,12 +62,12 @@ module.exports = function (grunt) {
           expand: true
         }]
       },
-      BetterAbout: {
+      URLParams: {
         options: {
-          archive: 'BetterAbout.zip'
+          archive: 'URLParams.zip'
         },
         files: [{
-          src: 'widgets/BetterAbout/**/**.*',
+          src: 'widgets/URLParams/**/**.*',
           dest: './',
           cwd: 'dist/',
           expand: true

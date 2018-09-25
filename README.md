@@ -39,6 +39,50 @@ This widget is a thin wrapper around the out-of-the-box About widget. The only t
 1. Move `widgets/BetterAbout/About/nls` and `widgets/BetterAbout/About/setting/nls` to `widgets/BetterAbout` and `widgets/BetterAbout/settings` respectively.
 1. Move `widgets/BetterAbout/About/Widget.html` and `widgets/BetterAbout/About/setting/Setting.html` to `widgets/BetterAbout` and `widgets/BetterAbout/settings` respectively.
 
+### URL Params
+This widget allows the application to be configured via URL parameters. Technically, it's an "on-screen" widget. However, it has no UI that is presented to the user.
+
+#### Additional steps to add as an on-screen widget to WAB Developer Edition
+1. Add a new config object to the `widgetOnScreen.widgets` array in `/client/stemapp/predefined-apps/default/config.json` & `/client/stemapp/config.json`.
+  ```json
+  {
+    "uri": "widgets/URLParams/Widget",
+    "visible": false,
+    "position": {
+      "top": 0,
+      "left": 0
+    }
+  }
+  ```
+1. Add a new config object property to the `mobileLayout.widgetOnScreen.widgets` object in the same two files as above.
+  ```json
+  "widgets/URLParams/Widget": {
+    "position": {
+      "top": 0,
+      "left": 0
+    }
+  }
+  ```
+
+#### Additional steps to add as an on-screen widget to an existing WAB application
+1. In WAB, add the URLParams widget to any widget container.
+1. Go to the object corresponding to this widget in the `widgetOnScreen.widgets` array in `config.json` and remove the `closable` & `placeholderIndex` properties.
+  ```json
+  {
+    "position": {
+      "left": 55,
+      "top": 45,
+      "relativeTo": "map"
+    },
+    "id": "_26",
+    "version": "0.3.1",
+    "uri": "widgets/URLParams/Widget",
+    "name": "URLParams",
+    "IsController": false,
+    "config": "configs/URLParams/config__26.json"
+  },
+  ```
+
 
 ## Development
 [Esri Yeoman Generators](https://github.com/Esri/generator-esri-appbuilder-js)  
