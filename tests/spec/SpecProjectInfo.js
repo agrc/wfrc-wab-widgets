@@ -1,6 +1,7 @@
 import ProjectInfo from 'widgets/ProjectInfo/ProjectInfo/ProjectInfo';
 import domConstruct from 'dojo/dom-construct';
 import EsriMap from 'esri/map';
+import configJson from 'dojo/text!widgets/ProjectInfo/config.json';
 
 
 describe('ProjectInfo', () => {
@@ -8,10 +9,7 @@ describe('ProjectInfo', () => {
 
   beforeEach(() => {
     testWidget = new ProjectInfo({
-      config: {
-        serviceUrl: 'blah',
-        excludeFields: []
-      },
+      config: JSON.parse(configJson),
       map: new EsriMap(domConstruct.create('div', {}, window.body))
     }, domConstruct.create('div', {}, window.body));
     testWidget.startup();

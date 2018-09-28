@@ -21,6 +21,12 @@ The color of the symbol used to display features that have been clicked on. Form
 `excludeFields` - `[string[]]`  
 This is a list of fields that should be excluded from the widget. Defaults to `["OBJECTID", "GlobalID"]`.
 
+`language` - `[string]`  
+The language that the strings in the widget should be displayed as. Possible values are `english` and `spanish`. Defaults to `english`.
+
+`strings` - `[object]`  
+The language-specific strings to be used in the widget.
+
 ### Comments
 This widget is embedded within the ProjectInfo widget. No need to copy additional files. This widget will only be displayed for features with a `GlobalID` field.
 
@@ -30,6 +36,15 @@ This controls weather the comments widget is displayed or not. Defaults to `true
 
 `newCommentsOpenUntil` [string]  
 The user will be able to post new comments until this date. Defaults to `"9999-01-31T00:00:00.000Z"`.
+
+`commentsTableUrl` [string]  
+The URL to the feature service that hosts the comments table. It is assumed that the comments table has the following fields:
+- PersonName (text(50))
+- PersonOrg (text(50))
+- PersonCont (text(50))
+- Comment (text(1000))
+- CommentDT (date)
+- GUID: (guid)
 
 ### BetterAbout
 This widget is a thin wrapper around the out-of-the-box About widget. The only thing that it adds is a click event on all of the images in the content of the widget that opens the images in a larger dialog box. Otherwise, it should behave exactly the same as the About widget.

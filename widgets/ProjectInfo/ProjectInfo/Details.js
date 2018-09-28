@@ -37,6 +37,10 @@ export default declare([_WidgetBase, _TemplatedMixin], {
   // config: Object
   config: null,
 
+  // nls: Object
+  //      language strings
+  nls: null,
+
   constructor(props) {
     console.log('Details:constructor', arguments);
 
@@ -136,7 +140,8 @@ export default declare([_WidgetBase, _TemplatedMixin], {
     if (this.shouldDisplayComments(this.fields) && !this.commentsShown) {
       this.own(new Comments({
         globalid: this.feature.attributes[GLOBALID_FIELD_NAME],
-        config: this.config
+        config: this.config,
+        nls: this.nls
       }, this.commentsContainer));
 
       this.commentsShown = true;

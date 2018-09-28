@@ -1,30 +1,30 @@
 <div>
-  <button data-dojo-attach-event="click: toggleNewCommentForm">Leave Comment</button>
+  <button data-dojo-attach-event="click: toggleNewCommentForm">${nls.leaveComment}</button>
 
   <div data-dojo-attach-point="newCommentForm" class="form" style="display: none;">
     <div class="form-row">
-      Name
+      ${nls.name}
       <span class="pull-right"></span>
       <br>
       <input type="text" data-dojo-attach-point="PersonName" maxlength="50" />
     </div>
 
     <div class="form-row">
-      Organization
+      ${nls.organization}
       <span class="pull-right"></span>
       <br>
       <input type="text" data-dojo-attach-point="PersonOrg" maxlength="50"/>
     </div>
 
     <div class="form-row">
-      Contact Information (email/phone)
+      ${nls.contact}
       <span class="pull-right"></span>
       <br>
       <input type="text" data-dojo-attach-point="PersonCont" maxlength="50"/>
     </div>
 
     <div class="form-row">
-      Comment*
+      ${nls.comment}
       <span class="pull-right"></span>
       <br>
       <textarea data-dojo-attach-point="Comment" maxlength="1000"></textarea>
@@ -33,13 +33,13 @@
     <span data-dojo-attach-point="submitErrorMessage" class="error"></span>
 
     <button data-dojo-attach-event="click: submitComment"
-      data-dojo-attach-point="submitBtn" disabled>Submit</button>
-    <button data-dojo-attach-event="click: clearForm">Cancel</button> <span class="pull-right">*Required</span>
+      data-dojo-attach-point="submitBtn" disabled>${nls.submit}</button>
+    <button data-dojo-attach-event="click: clearForm">${nls.cancel}</button> <span class="pull-right">${nls.required}</span>
   </div>
 
-  <h2>Public Comments
+  <h2>${nls.publicComments}
     (<span data-dojo-attach-point="numComments"></span>)
-    <button class="pull-right" data-dojo-attach-event="click: toggleExistingComments">show</button>
+    <button class="pull-right" data-dojo-attach-event="click: toggleExistingComments">${nls.show}</button>
   </h2>
   <span data-dojo-attach-point="loadExistingErrorMessage" class="error"></span>
   <div data-dojo-attach-point="commentsContainer" style="display: none;"></div>

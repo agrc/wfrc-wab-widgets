@@ -2,15 +2,18 @@
 import Comments from 'widgets/ProjectInfo/ProjectInfo/Comments';
 import domConstruct from 'dojo/dom-construct';
 import fieldsJson from 'dojo/text!tests/data/fields.json';
+import configJson from 'dojo/text!widgets/ProjectInfo/config.json';
 
 
 describe('Comments', () => {
   let testWidget;
+  const config = JSON.parse(configJson);
 
   beforeEach(() => {
     testWidget = new Comments({
       fields: JSON.parse(fieldsJson),
-      config: { commentsTableUrl: 'blah' }
+      config,
+      nls: config.strings.english
     }, domConstruct.create('div', {}, window.body));
     testWidget.startup();
   });

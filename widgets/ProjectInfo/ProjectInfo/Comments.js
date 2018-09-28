@@ -24,6 +24,10 @@ export default declare([_WidgetBase, _TemplatedMixin], {
   //      the config object from config.json
   config: null,
 
+  // nls: Object
+  //      language strings
+  nls: null,
+
   constructor() {
     console.log('Comments:constructor', arguments);
   },
@@ -112,12 +116,12 @@ export default declare([_WidgetBase, _TemplatedMixin], {
   toggleExistingComments(event) {
     console.log('Comment:toggleExistingComments', arguments);
 
-    if (event.target.textContent === 'show') {
+    if (event.target.textContent === this.nls.show) {
       coreFx.wipeIn({ node: this.commentsContainer }).play();
-      event.target.textContent = 'hide';
+      event.target.textContent = this.nls.hide;
     } else {
       coreFx.wipeOut({ node: this.commentsContainer }).play();
-      event.target.textContent = 'show';
+      event.target.textContent = this.nls.show;
     }
   },
 

@@ -4,7 +4,6 @@ import declare from 'dojo/_base/declare';
 import Details from './Details';
 import domConstruct from 'dojo/dom-construct';
 import Query from 'esri/tasks/query';
-import strings from 'dojo/i18n!./nls/strings';
 import template from 'dojo/text!./ProjectInfo.html';
 
 
@@ -16,7 +15,7 @@ export default declare([_WidgetBase, _TemplatedMixin], {
   postMixInProperties() {
     console.log('ProjectInfo:postMixInProperties', arguments);
 
-    this.nls = strings;
+    this.nls = this.config.strings[this.config.language];
 
     this.inherited(arguments);
   },
@@ -80,7 +79,8 @@ export default declare([_WidgetBase, _TemplatedMixin], {
           feature,
           fields: feature.fields,
           displayField: feature.displayField,
-          config: this.config
+          config: this.config,
+          nls: this.nls
         }, domConstruct.create('div', {}, this.detailsContainer));
       });
 
