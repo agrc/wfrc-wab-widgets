@@ -70,7 +70,12 @@ Note: This will clear out any existing URL parameters in the address bar. Howeve
 1. Move `widgets/BetterAbout/About/Widget.html` and `widgets/BetterAbout/About/setting/Setting.html` to `widgets/BetterAbout` and `widgets/BetterAbout/settings` respectively.
 
 ### URL Params
-This widget allows the application to be configured via URL parameters. Technically, it's an "on-screen" widget. However, it has no UI that is presented to the user.
+This widget allows the application to be configured via URL parameters. Technically, it's an "on-screen" widget. However, it has no UI that is presented to the user. The widget supports the following parameters:
+
+1. `x`, `y`, & `scale`. These parameters control the initial extent of the map when the application is loaded. They are dynamically updated any time the map extent changes.
+  - example: `x=-12475241&y=4960919&scale=144448`
+1. `guid` and `layerid`. These parameters load the application in a state as if the user had clicked on the specified project. They are dynamically updated each time the user expands a project to reveal its details.
+  - example: `guid=%7BD4C8986B-942A-470F-A0D9-2F9BDF690851%7D&layerid=RTP_2019_2050_DraftPhased_1851`
 
 #### Additional steps to add as an on-screen widget to WAB Developer Edition
 1. Add a new config object to the `widgetOnScreen.widgets` array in `/client/stemapp/predefined-apps/default/config.json` & `/client/stemapp/config.json`.
