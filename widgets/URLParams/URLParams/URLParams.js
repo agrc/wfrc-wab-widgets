@@ -6,6 +6,13 @@ import Point from 'esri/geometry/Point';
 
 
 export default declare([_WidgetBase], {
+  // properties passed in via constructor
+  // map: esri/map
+  map: null,
+
+  // config: Object
+  config: null,
+
   postCreate() {
     console.log('URLParams:postCreate', arguments);
 
