@@ -1,5 +1,6 @@
 import _TemplatedMixin from 'dijit/_TemplatedMixin';
 import _WidgetBase from 'dijit/_WidgetBase';
+import { GLOBALID_FIELD_NAME } from './Constants';
 import Comments from './Comments';
 import coreFx from 'dojo/fx';
 import declare from 'dojo/_base/declare';
@@ -8,9 +9,9 @@ import SimpleFillSymbol from 'esri/symbols/SimpleFillSymbol';
 import SimpleLineSymbol from 'esri/symbols/SimpleLineSymbol';
 import SimpleMarkerSymbol from 'esri/symbols/SimpleMarkerSymbol';
 import template from 'dojo/text!./Details.html';
+import topic from 'dojo/topic';
 
 
-const GLOBALID_FIELD_NAME = 'GlobalID';
 export default declare([_WidgetBase, _TemplatedMixin], {
   baseClass: 'details',
   templateString: template,
@@ -33,6 +34,11 @@ export default declare([_WidgetBase, _TemplatedMixin], {
   // displayField: String
   //      the name of the field to use as the title
   displayField: null,
+
+  // layerID: String
+  //    the id of the parent layer for this feature.
+  //    used by URLParams
+  layerID: null,
 
   // config: Object
   config: null,
@@ -148,6 +154,12 @@ export default declare([_WidgetBase, _TemplatedMixin], {
     }
 
     coreFx.wipeIn({ node: this.body }).play();
+
+    // this topic name needs to match what's in URLParams.js
+    topic.publish('url-params-on-project-click', {
+      guid: this.feature.attributes[GLOBALID_FIELD_NAME],
+      layerid: this.layerID
+    });
   },
 
   onTitleClick() {

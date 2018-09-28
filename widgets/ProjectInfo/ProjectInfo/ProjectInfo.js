@@ -26,12 +26,14 @@ export default declare([_WidgetBase, _TemplatedMixin], {
     this.featureLayers = this.map.graphicsLayerIds.map(id => this.map.getLayer(id)).filter(layer => layer.url);
 
     this.own(this.map.on('click', this.onMapClick.bind(this)));
+
+    if (window.URLParams && window.URLParams.project) {
+      this.setFeatures([window.URLParams.project]);
+    }
   },
 
   onMapClick(clickEvent) {
     console.log('ProjectInfo.onMapClick', clickEvent);
-
-    this.instructions.className = 'hidden';
 
     const query = new Query();
     query.geometry = clickEvent.mapPoint;
@@ -45,6 +47,7 @@ export default declare([_WidgetBase, _TemplatedMixin], {
         return featureSet.map(feature => {
           feature.fields = layer.fields;
           feature.displayField = layer.displayField;
+          feature.layerID = layer.id;
 
           return feature;
         });
@@ -74,11 +77,14 @@ export default declare([_WidgetBase, _TemplatedMixin], {
     }
 
     if (features.length > 0) {
+      this.instructions.className = 'hidden';
+
       this.detailsWidgets = features.map(feature => {
         return new Details({
           feature,
           fields: feature.fields,
           displayField: feature.displayField,
+          layerID: feature.layerID,
           config: this.config,
           nls: this.nls
         }, domConstruct.create('div', {}, this.detailsContainer));

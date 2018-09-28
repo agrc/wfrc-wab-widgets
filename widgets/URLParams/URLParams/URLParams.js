@@ -3,6 +3,8 @@ import declare from 'dojo/_base/declare';
 import hash from 'dojo/hash';
 import ioQuery from 'dojo/io-query';
 import Point from 'esri/geometry/Point';
+import Query from 'esri/tasks/query';
+import topic from 'dojo/topic';
 
 
 export default declare([_WidgetBase], {
@@ -12,6 +14,12 @@ export default declare([_WidgetBase], {
 
   // config: Object
   config: null,
+
+  constructor(/* props */) {
+    window.URLParams = {};
+
+    this.inherited(arguments);
+  },
 
   postCreate() {
     console.log('URLParams:postCreate', arguments);
@@ -26,7 +34,29 @@ export default declare([_WidgetBase], {
 
     const params = ioQuery.queryToObject(hash());
 
-    if (params.scale && params.x && params.y) {
+    if (params.guid && params.layerid) {
+      const layer = this.map.getLayer(params.layerid);
+
+      const query = new Query();
+      query.returnGeometry = true;
+      query.where = `GlobalID = '${params.guid}'`;
+
+      layer.selectFeatures(query).then(features => {
+        if (features.length > 0) {
+          const feature = features[0];
+          feature.fields = layer.fields;
+          feature.displayField = layer.displayField;
+          feature.layerID = layer.id;
+
+          // to be picked up by ProjectInfo widget
+          window.URLParams.project = feature;
+
+          this.map.setExtent(feature.geometry.getExtent(), true);
+        }
+
+        this.wireEvents();
+      });
+    } else if (params.scale && params.x && params.y) {
       this.map.setScale(parseInt(params.scale, 10));
       this.map.centerAt(new Point({
         x: parseInt(params.x, 10),
@@ -42,7 +72,9 @@ export default declare([_WidgetBase], {
     console.log('URLParams:wireEvents', arguments);
 
     this.own(
-      this.map.on('extent-change', this.onMapExtentChange.bind(this))
+      this.map.on('extent-change', this.onMapExtentChange.bind(this)),
+      topic.subscribe('url-params-on-project-click', this.setProjectParams.bind(this)),
+      this.map.on('click', this.removeParams.bind(this, ['guid', 'layerid']))
     );
   },
 
@@ -51,13 +83,39 @@ export default declare([_WidgetBase], {
 
     const center = event.extent.getCenter();
     if (center.x && center.y) {
-      const newProperties = Object.assign(ioQuery.queryToObject(hash()), {
+      this.setParams({
         x: Math.round(center.x),
         y: Math.round(center.y),
         scale: Math.round(this.map.getScale())
       });
-
-      return hash(ioQuery.objectToQuery(newProperties), true);
     }
+  },
+
+  setProjectParams(config) {
+    // config contains url and guid
+    console.log('URLParams:setProjectParams', arguments);
+
+    this.setParams(config);
+    this.removeParams(['x', 'y', 'scale']);
+  },
+
+  setParams(params) {
+    // sets the params in the URL without messing with other ones
+    console.log('URLParams:setParams');
+
+    const newParams = Object.assign(ioQuery.queryToObject(hash()), params);
+
+    return hash(ioQuery.objectToQuery(newParams), true);
+  },
+
+  removeParams(params) {
+    // params: string[]
+    console.log('URLParams:removeParams', arguments);
+
+    const newParams = ioQuery.queryToObject(hash());
+
+    params.forEach(param => delete newParams[param]);
+
+    return hash(ioQuery.objectToQuery(newParams), true);
   }
 });
