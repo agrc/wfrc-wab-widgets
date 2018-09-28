@@ -34,7 +34,22 @@ The user will be able to post new comments until this date. Defaults to `"9999-0
 ### BetterAbout
 This widget is a thin wrapper around the out-of-the-box About widget. The only thing that it adds is a click event on all of the images in the content of the widget that opens the images in a larger dialog box. Otherwise, it should behave exactly the same as the About widget.
 
-#### To update the About widget files
+#### Table of Contents
+A table of contents with clickable links can be achieve by using anchor tags to link to headers further down in the document. You can read more about this [on MDN](https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/Creating_hyperlinks#Document_fragments). For example. If you want to link to this header...
+
+```html
+<h1 id='my_header'>My Header</h1>
+```
+
+...you can use an anchor tag like this:
+
+```html
+<a href='#my_header'>my header</a>
+```
+
+Note: This will clear out any existing URL parameters in the address bar. However, I don't believe that this will make any difference to the average user; they likely won't even notice. This is just something to be aware of if you are building a URL to share with someone.
+
+#### To update the About widget files (developer task)
 1. Copy the About widget into `widgets/BetterAbout/About`.
 1. Move `widgets/BetterAbout/About/nls` and `widgets/BetterAbout/About/setting/nls` to `widgets/BetterAbout` and `widgets/BetterAbout/settings` respectively.
 1. Move `widgets/BetterAbout/About/Widget.html` and `widgets/BetterAbout/About/setting/Setting.html` to `widgets/BetterAbout` and `widgets/BetterAbout/settings` respectively.
