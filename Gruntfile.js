@@ -93,6 +93,7 @@ module.exports = function (grunt) {
     copy: {
       main: {
         src: [
+          'widgets/BetterAbout/About/**/*.*',
           'widgets/**/**.html',
           'widgets/**/**.json',
           'widgets/**/**.css',
