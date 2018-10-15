@@ -10,6 +10,7 @@ This widget displays the attribute values for map features that the user has cli
 
 Notes:  
 * Popups should be removed from all feature layers within the web map to prevent the map popup from showing when clicking on features.
+* Each feature layer is required to have a valid display field defined.
 
 #### Configuration
 `clickedPixelTolerance` - `[number]`  
