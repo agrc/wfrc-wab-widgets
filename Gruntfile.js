@@ -21,7 +21,8 @@ module.exports = function (grunt) {
             'themes/**/**/*.js',
             'themes/!**/**/nls/*.js',
             'tests/spec/**/*.js',
-            '!widgets/BetterAbout/About/**/*.js'
+            '!widgets/BetterAbout/About/**',
+            '!widgets/LayerSelector/layer-selector/**'
           ],
           dest: 'dist/'
         }]
@@ -30,7 +31,7 @@ module.exports = function (grunt) {
     bump: {
       options: {
         files: bumpFiles,
-        commitFiles: bumpFiles.concat(['ProjectInfo.zip', 'BetterAbout.zip', 'URLParams.zip']),
+        commitFiles: bumpFiles.concat(['ProjectInfo.zip', 'BetterAbout.zip', 'URLParams.zip', 'LayerSelector.zip']),
         pushTo: 'origin'
       }
     },
@@ -72,6 +73,17 @@ module.exports = function (grunt) {
           cwd: 'dist/',
           expand: true
         }]
+      },
+      LayerSelector: {
+        options: {
+          archive: 'LayerSelector.zip'
+        },
+        files: [{
+          src: 'widgets/LayerSelector/**/**.*',
+          dest: './',
+          cwd: 'dist/',
+          expand: true
+        }]
       }
     },
     connect: {
@@ -94,6 +106,7 @@ module.exports = function (grunt) {
       main: {
         src: [
           'widgets/BetterAbout/About/**/*.*',
+          'widgets/LayerSelector/layer-selector/**',
           'widgets/**/**.html',
           'widgets/**/**.json',
           'widgets/**/**.css',
@@ -120,9 +133,10 @@ module.exports = function (grunt) {
         src: [
           'Gruntfile.js',
           'widgets/**/*.js',
-          '!widgets/BetterAbout/About/**/*.js',
-          '!widgets/BetterAbout/nls/**/*.js',
-          '!widgets/BetterAbout/setting/nls/**/*.js'
+          '!widgets/BetterAbout/About/**',
+          '!widgets/BetterAbout/nls/**',
+          '!widgets/BetterAbout/setting/nls/**',
+          '!widgets/LayerSelector/layer-selector/**'
         ]
       }
     },
@@ -167,6 +181,14 @@ module.exports = function (grunt) {
           src: '**',
           dest: appDir
         }]
+      },
+      layerSelector: {
+        files: [{
+          cwd: 'node_modules/layer-selector',
+          src: ['*.js', 'resources/**', 'templates/**'],
+          dest: 'widgets/LayerSelector/layer-selector/'
+        }],
+        compareUsing: 'md5'
       }
     },
     watch: {
@@ -194,7 +216,7 @@ module.exports = function (grunt) {
     }
   });
 
-  grunt.registerTask('default', ['connect', 'watch']);
+  grunt.registerTask('default', ['connect', 'sync:layerSelector', 'watch']);
 
   grunt.registerTask('test', ['clean', 'sass', 'babel', 'copy', 'connect', 'jasmine']);
 

@@ -3,3 +3,4 @@ require(['tests/spec/SpecProjectInfo']);
 require(['tests/spec/SpecDetails']);
 require(['tests/spec/SpecComments']);
 require(['tests/spec/SpecURLParams']);
+require(['tests/spec/SpecLayerSelector']);

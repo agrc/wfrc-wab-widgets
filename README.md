@@ -119,6 +119,17 @@ This widget allows the application to be configured via URL parameters. Technica
   },
   ```
 
+### Layer Selector
+This widget is an alternative to the out-of-the-box Basemap Gallery widget. It is a wrapper around the [AGRC Layer Selector widget](https://github.com/agrc-widgets/layer-selector).
+
+This widget is an on-screen widget so it requires the same additional steps to add it to WAB dev edition and existing apps as the URL Parameter widget above. The position configs are irrelevant since this widget positions itself.
+
+Since this widget manages the base map independent of the web map, it requires you to [set the transparency for the base map layer in your web map to 100%](https://support.esri.com/en/technical-article/000012413) so that it is invisible. This feels like a bit of a hack but would require significant changes to the parent widget for it to work otherwise.
+
+#### Configuration
+This widget takes the same configuration parameters as the [constructor for the parent LayerSelector widget](https://github.com/agrc-widgets/layer-selector/blob/8835bafaeaefb71ee1fb3d10a7c4bcb15e87b38b/LayerSelector.js#L160-L175).
+
+Examples of loading different layers can be found in the [layer-selector tests](https://github.com/agrc-widgets/layer-selector/tree/v1.1.2/tests).
 
 ## Development
 [Esri Yeoman Generators](https://github.com/Esri/generator-esri-appbuilder-js)  

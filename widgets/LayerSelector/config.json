@@ -1,0 +1,20 @@
+{
+  "quadWord": "your-quad-word-here",
+  "baseLayers": [
+    "Terrain",
+    "Imagery",
+    "Lite"
+  ],
+  "overlays": [
+    "Overlay",
+    {
+      "id": "Land Ownership",
+      "Factory": "FeatureLayer",
+      "url": "https://gis.trustlands.utah.gov/server/rest/services/Ownership/UT_SITLA_Ownership_LandOwnership_WM/FeatureServer/0",
+      "opacity": 0.5
+    },
+    "Address Points"
+  ],
+  "top": true,
+  "right": false
+}
