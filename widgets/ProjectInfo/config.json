@@ -22,18 +22,18 @@
       "hide": "Hide"
     },
     "spanish": {
-      "instructions": "To be translated: Click on a project on the map to view information and leave comments.",
-      "leaveComment": "TBT: Leave comment",
-      "name": "TBT: Name",
-      "organization": "TBT: Organization",
-      "contact": "TBT: Contact Information (email/phone)",
-      "comment": "TBT: Comment*",
-      "submit": "TBT: Submit",
-      "cancel": "TBT: Cancel",
-      "required": "TBT: *Required",
-      "publicComments": "TBT: Public Comments",
-      "show": "TBT: Show",
-      "hide": "TBT: Hide"
+      "instructions": "Haga click sobre un proyecto en el mapa para ver la información y comentar.",
+      "leaveComment": "Comentar",
+      "name": "Nombre",
+      "organization": "Organización",
+      "contact": "Contacto (teléfono/correo electrónico)",
+      "comment": "Comentario*",
+      "submit": "Enviar",
+      "cancel": "Cancelar",
+      "required": "*Solicitado",
+      "publicComments": "Comentarios del Público",
+      "show": "Mostrar",
+      "hide": "Esconder"
     }
   }
 }
