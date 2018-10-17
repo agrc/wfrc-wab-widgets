@@ -4,7 +4,7 @@
   "2D": true,
   "3D": false,
   "platform": "HTML",
-  "version": "0.0.1",
+  "version": "1.1.0",
   "wabVersion": "2.9",
   "author": "Scott Davis <stdavis@utah.gov>",
   "description": "A WAB wrapper around AGRC&#39;s layer-selector widget.",
