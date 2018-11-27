@@ -46,7 +46,13 @@ module.exports = function (grunt) {
     bump: {
       options: {
         files: bumpFiles,
-        commitFiles: bumpFiles.concat(['ProjectInfo.zip', 'BetterAbout.zip', 'URLParams.zip', 'LayerSelector.zip']),
+        commitFiles: bumpFiles.concat([
+          'ProjectInfo.zip',
+          'BetterAbout.zip',
+          'URLParams.zip',
+          'LayerSelector.zip',
+          'WFRCFilter.zip'
+        ]),
         pushTo: 'origin'
       }
     },
@@ -95,6 +101,17 @@ module.exports = function (grunt) {
         },
         files: [{
           src: 'widgets/LayerSelector/**/**.*',
+          dest: './',
+          cwd: 'dist/',
+          expand: true
+        }]
+      },
+      WFRCFilter: {
+        options: {
+          archive: 'WFRCFilter.zip'
+        },
+        files: [{
+          src: 'widgets/WFRCFilter/**/**.*',
           dest: './',
           cwd: 'dist/',
           expand: true
