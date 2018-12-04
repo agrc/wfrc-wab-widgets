@@ -10,5 +10,8 @@ export default declare([_WidgetBase, _TemplatedMixin], {
 
   postCreate() {
     console.log('Filter.postCreate');
+
+    this.modes.indeterminate = true;
+    this.phasing.indeterminate = true;
   }
 });

@@ -1,0 +1,41 @@
+.wfrc-filter {
+  table {
+    width: 100%;
+    tr {
+      height: 23px;
+    }
+    .indent {
+      margin-left: 15px;
+    }
+    .legend-swatch {
+      width: 50px;
+      height: 15px;
+      float: right;
+      margin-right: 30px;
+    }
+    td.vertical {
+      width: 35%;
+      position: relative;
+    }
+    .vertical-swatch-container {
+      top: 0px;
+      bottom: 0px;
+      left: 0px;
+      right: 0px;
+      position: absolute;
+      display: flex;
+      justify-content: center;
+    }
+    .vertical-swatch {
+      height: 100%;
+      width: 14%;
+    }
+    img.question-mark {
+      float: right;
+    }
+    button {
+      margin-top: 10px;
+      width: 50%;
+    }
+  }
+}

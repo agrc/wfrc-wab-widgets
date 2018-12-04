@@ -1,3 +1,32 @@
-.wfrc-filter {
-  
-}
+.wfrc-filter table {
+  width: 100%; }
+  .wfrc-filter table tr {
+    height: 23px; }
+  .wfrc-filter table .indent {
+    margin-left: 15px; }
+  .wfrc-filter table .legend-swatch {
+    width: 50px;
+    height: 15px;
+    float: right;
+    margin-right: 30px; }
+  .wfrc-filter table td.vertical {
+    width: 35%;
+    position: relative; }
+  .wfrc-filter table .vertical-swatch-container {
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    position: absolute;
+    display: flex;
+    justify-content: center; }
+  .wfrc-filter table .vertical-swatch {
+    height: 100%;
+    width: 14%; }
+  .wfrc-filter table img.question-mark {
+    float: right; }
+  .wfrc-filter table button {
+    margin-top: 10px;
+    width: 50%; }
+
+/*# sourceMappingURL=style.css.map */
