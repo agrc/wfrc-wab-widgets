@@ -57,7 +57,7 @@ export default declare([_WidgetBase, _TemplatedMixin], {
     // query all feature layers and then flatten into a single array of features
     Promise.all(this.featureLayers.map(layer => {
       return layer.selectFeatures(query).then(getAddMetaToFeatureFunction(layer));
-    })).then(featureSets => this.setFeatures(featureSets.flat()));
+    })).then(featureSets => this.setFeatures(featureSets.reduce((acc, val) => acc.concat(val), [])));
   },
 
   getTolerance(pixelTolerance) {

@@ -4,6 +4,29 @@ Web App Builder Widgets built for Wasatch Front Regional Council
 [Requirements](https://docs.google.com/document/d/1h_7FTRrov3WgGAcQXJFpw87Adz9oFyiwgOkJOsYnqLw/edit)  
 [Mockups](https://docs.google.com/presentation/d/1gkYFpZ-4EedxJpL895hKCi5OjegASWdz1YrS2kAYN6Y/edit?ts=5b9195cc#slide=id.p)
 
+## General Setup for All Widgets
+### Add a polyfill for older browsers
+Add `https://cdn.polyfill.io/v2/polyfill.min.js?features=default,Array.prototype.includes` to the resources array (~ line 104) in `init.js` within your Web App Builder App. For example:
+```js
+resources = resources.concat([
+  window.apiUrl + 'dojo/resources/dojo.css',
+  window.apiUrl + 'dijit/themes/claro/claro.css',
+  window.apiUrl + 'esri/css/esri.css',
+  window.apiUrl + 'dojox/layout/resources/ResizeHandle.css',
+  window.path + 'jimu.js/css/jimu-theme.css',
+  window.path + 'libs/caja-html-sanitizer-minified.js',
+  window.path + 'libs/moment/twix.js',
+  window.path + 'libs/Sortable.js',
+
+  window.path + 'libs/cropperjs/cropperjs.js',
+  window.path + 'libs/cropperjs/cropper.css',
+  //because we have jimu/dijit/GridLayout dijit, so we import this css here
+  window.path + 'libs/goldenlayout/goldenlayout-base.css',
+  window.path + 'libs/goldenlayout/goldenlayout-light-theme.css',
+  'https://cdn.polyfill.io/v2/polyfill.min.js?features=default,Array.prototype.includes'
+]);
+```
+
 ## Widget Documentation
 ### ProjectInfo
 This widget displays the attribute values for map features that the user has clicked on. Features are collected from all feature layers that have been added to the map. The value that is show in the title bar is the value of the display field as defined in the feature service. Field name aliases are also used if they are defined.

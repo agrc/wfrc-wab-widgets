@@ -9,6 +9,21 @@ module.exports = function (grunt) {
   grunt.initConfig({
     babel: {
       main: {
+        options: {
+          sourceMap: true,
+          presets: [
+            [
+              '@babel/preset-env',
+              {
+                useBuiltIns: false,
+                modules: false
+              }
+            ]
+          ],
+          plugins: [
+            'transform-es2015-modules-simple-amd'
+          ]
+        },
         files: [{
           expand: true,
           src: [
