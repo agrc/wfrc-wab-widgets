@@ -40,7 +40,7 @@
     <tr>
       <td>
         <label class="indent">
-          <input type="checkbox" data-dojo-attach-point="bikeped" /> Bike Ped
+          <input type="checkbox" data-dojo-attach-point="bikeped" /> Bike/Ped
         </label>
       </td>
       <td>
@@ -109,28 +109,18 @@
     <tr>
       <td>
         <label>
-          <input type="checkbox" data-dojo-attach-point="centers" checked/> Centers
+          <input type="checkbox" data-dojo-attach-point="landuse" checked/> Land Use
+        </label>
+        <label class="indent">
+          <input type="checkbox" /> <i>(filter by phasing)</i>
         </label>
       </td>
     </tr>
     <tr>
       <td>
-        <table>
-          <tr>
-            <td>
-              <label class="indent">
-                <input type="radio" name="center-options" checked /> All
-              </label>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <label class="indent">
-                <input type="radio" name="center-options" /> Use Phasing
-              </label>
-            </td>
-          </tr>
-        </table>
+        <label class="indent">
+          <input type="checkbox" checked/> Centers
+        </label>
       </td>
       <td class="vertical">
         <div class="vertical-swatch-container">
@@ -138,6 +128,21 @@
           <div class="vertical-swatch" style="background: #E64C00"></div> <!-- regional -->
           <div class="vertical-swatch" style="background: #E69800"></div> <!-- town -->
           <div class="vertical-swatch" style="background: #0070FF"></div> <!-- neighborhood -->
+        </div>
+        <img src="widgets/WFRCFilter/Filter/css/images/question_mark.svg" alt="question mark" class="question-mark">
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <label class="indent">
+          <input type="checkbox" checked/> General Land Use
+        </label>
+      </td>
+      <td class="vertical">
+        <div class="vertical-swatch-container">
+          <div class="vertical-swatch" style="background: #FF0000"></div> <!-- employment -->
+          <div class="vertical-swatch" style="background: #C500FF"></div> <!-- industrial -->
+          <div class="vertical-swatch" style="background: #4E4E4E"></div> <!-- other -->
         </div>
         <img src="widgets/WFRCFilter/Filter/css/images/question_mark.svg" alt="question mark" class="question-mark">
       </td>
@@ -156,22 +161,24 @@
     <tr>
       <td>
         <label class="indent">
-          <input type="checkbox" /> Land Use Types
+          <input type="checkbox" /> Existing Bike/Ped
         </label>
       </td>
-      <td class="vertical">
-        <div class="vertical-swatch-container">
-          <div class="vertical-swatch" style="background: #FF0000"></div> <!-- employment -->
-          <div class="vertical-swatch" style="background: #C500FF"></div> <!-- industrial -->
-          <div class="vertical-swatch" style="background: #4E4E4E"></div> <!-- other -->
-        </div>
-        <img src="widgets/WFRCFilter/Filter/css/images/question_mark.svg" alt="question mark" class="question-mark">
+      <td>
+        <img class="legend-swatch" src="widgets/WFRCFilter/Filter/css/images/dotted_line-gray.png" alt="dotted gray line">
       </td>
     </tr>
     <tr>
       <td>
         <label class="indent">
           <input type="checkbox" /> Neighboring Projects
+        </label>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <label class="indent">
+          <input type="checkbox" /> Neighboring Land Use
         </label>
       </td>
       <td>
@@ -186,16 +193,6 @@
       </td>
       <td>
         <div class="legend-swatch" style="background-color: #ABC3C2;"></div>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <label class="indent">
-          <input type="checkbox" /> Existing Bike/Ped
-        </label>
-      </td>
-      <td>
-        <img class="legend-swatch" src="widgets/WFRCFilter/Filter/css/images/dotted_line-gray.png" alt="dotted gray line">
       </td>
     </tr>
     <tr>
