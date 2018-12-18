@@ -1,12 +1,15 @@
 import Filter from 'widgets/WFRCFilter/Filter/Filter';
 import domConstruct from 'dojo/dom-construct';
+import configJson from 'dojo/text!widgets/WFRCFilter/config.json';
 
 
 describe('Filter', () => {
   let testWidget;
 
   beforeEach(() => {
-    testWidget = new Filter({}, domConstruct.create('div', {}, document.body));
+    testWidget = new Filter({
+      config: JSON.parse(configJson)
+    }, domConstruct.create('div', {}, document.body));
   });
 
   afterEach(() => {

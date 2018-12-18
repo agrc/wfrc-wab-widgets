@@ -2,10 +2,29 @@
   "language": "english",
   "strings": {
     "english": {
-
+      "projectModes": "Project Modes",
+      "byPattern": "by pattern",
+      "line": "Line",
+      "point": "Point",
+      "roads": "Roads",
+      "transit": "Transit",
+      "bikeped": "Bike/Ped",
+      "projectPhasing": "Project Phasing",
+      "phase1": "Phase 1 (2019-29)",
+      "phase2": "Phase 2 (2030-39)",
+      "phase3": "Phase 3 (2040-50)",
+      "unfunded": "Unfunded Needs",
+      "landUse": "Land Use",
+      "byPhasing": "filter by phasing",
+      "centers": "Centers",
+      "generalLandUse": "General Land Use",
+      "other": "Other",
+      "existingBikeped": "Existing Bike/Ped",
+      "neighboringProjects": "Neighboring Projects",
+      "neighboringLandUse": "Neighboring Land Use",
+      "planningBoundaries": "Planning Boundaries",
+      "resetFilters": "Reset Filters"
     },
-    "spanish": {
-
-    }
+    "spanish": {}
   }
 }

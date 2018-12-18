@@ -8,6 +8,12 @@ export default declare([_WidgetBase, _TemplatedMixin], {
   baseClass: 'wfrc-filter',
   templateString: template,
 
+  postMixInProperties() {
+    console.log('Filter.postMixInProperties');
+
+    this.nls = this.config.strings[this.config.language];
+  },
+
   postCreate() {
     console.log('Filter.postCreate');
 

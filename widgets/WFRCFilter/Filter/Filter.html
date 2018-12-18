@@ -4,17 +4,17 @@
     <tr>
       <td>
         <label>
-          <input type="checkbox" data-dojo-attach-point="modes" /> Project Modes
-          <small>(by pattern)</small>
+          <input type="checkbox" data-dojo-attach-point="modes" /> ${nls.projectModes}
+          <small>(${nls.byPattern})</small>
         </label>
       </td>
-      <td>Line</td>
-      <td>Point</td>
+      <td>${nls.line}</td>
+      <td>${nls.point}</td>
     </tr>
     <tr>
       <td>
         <label class="indent">
-          <input type="checkbox" data-dojo-attach-point="roads" checked /> Roads
+          <input type="checkbox" data-dojo-attach-point="roads" checked /> ${nls.roads}
         </label>
       </td>
       <td>
@@ -27,7 +27,7 @@
     <tr>
       <td>
         <label class="indent">
-          <input type="checkbox" data-dojo-attach-point="transit" checked /> Transit
+          <input type="checkbox" data-dojo-attach-point="transit" checked /> ${nls.transit}
         </label>
       </td>
       <td>
@@ -40,7 +40,7 @@
     <tr>
       <td>
         <label class="indent">
-          <input type="checkbox" data-dojo-attach-point="bikeped" /> Bike/Ped
+          <input type="checkbox" data-dojo-attach-point="bikeped" /> ${nls.bikeped}
         </label>
       </td>
       <td>
@@ -57,7 +57,7 @@
     <tr>
       <td>
         <label>
-          <input type="checkbox" data-dojo-attach-point="phasing" /> Project Phasing
+          <input type="checkbox" data-dojo-attach-point="phasing" /> ${nls.projectPhasing}
           <small>(by color)</small>
         </label>
       </td>
@@ -65,7 +65,7 @@
     <tr>
       <td>
         <label class="indent">
-          <input type="checkbox" checked /> Phase 1 (2019-29)
+          <input type="checkbox" checked /> ${nls.phase1}
         </label>
       </td>
       <td>
@@ -75,7 +75,7 @@
     <tr>
       <td>
         <label class="indent">
-          <input type="checkbox" /> Phase 2 (2030-39)
+          <input type="checkbox" /> ${nls.phase2}
         </label>
       </td>
       <td>
@@ -85,7 +85,7 @@
     <tr>
       <td>
         <label class="indent">
-          <input type="checkbox" /> Phase 3 (2040-50)
+          <input type="checkbox" /> ${nls.phase3}
         </label>
       </td>
       <td>
@@ -95,7 +95,7 @@
     <tr>
       <td>
         <label class="indent">
-          <input type="checkbox" /> Unfunded Needs
+          <input type="checkbox" /> ${nls.unfunded}
         </label>
       </td>
       <td>
@@ -109,17 +109,17 @@
     <tr>
       <td>
         <label>
-          <input type="checkbox" data-dojo-attach-point="landuse" checked/> Land Use
+          <input type="checkbox" data-dojo-attach-point="landuse" checked/> ${nls.landUse}
         </label>
         <label class="indent">
-          <input type="checkbox" /> <i>(filter by phasing)</i>
+          <input type="checkbox" /> <i>(${nls.byPhasing})</i>
         </label>
       </td>
     </tr>
     <tr>
       <td>
         <label class="indent">
-          <input type="checkbox" checked/> Centers
+          <input type="checkbox" checked/> ${nls.centers}
         </label>
       </td>
       <td class="vertical">
@@ -135,7 +135,7 @@
     <tr>
       <td>
         <label class="indent">
-          <input type="checkbox" checked/> General Land Use
+          <input type="checkbox" checked/> ${nls.generalLandUse}
         </label>
       </td>
       <td class="vertical">
@@ -154,14 +154,14 @@
     <tr>
       <td>
         <label>
-          <input type="checkbox" data-dojo-attach-point="other" /> Other
+          <input type="checkbox" data-dojo-attach-point="other" /> ${nls.other}
         </label>
       </td>
     </tr>
     <tr>
       <td>
         <label class="indent">
-          <input type="checkbox" /> Existing Bike/Ped
+          <input type="checkbox" /> ${nls.existingBikeped}
         </label>
       </td>
       <td>
@@ -171,14 +171,14 @@
     <tr>
       <td>
         <label class="indent">
-          <input type="checkbox" /> Neighboring Projects
+          <input type="checkbox" /> ${nls.neighboringProjects}
         </label>
       </td>
     </tr>
     <tr>
       <td>
         <label class="indent">
-          <input type="checkbox" /> Neighboring Land Use
+          <input type="checkbox" /> ${nls.neighboringLandUse}
         </label>
       </td>
       <td>
@@ -188,7 +188,7 @@
     <tr>
       <td>
         <label class="indent">
-          <input type="checkbox" /> Planning Boundaries
+          <input type="checkbox" /> ${nls.planningBoundaries}
         </label>
       </td>
       <td>
@@ -197,7 +197,7 @@
     </tr>
     <tr>
       <td colspan="2" align="center">
-        <button>Reset Filters</button>
+        <button>${nls.resetFilters}</button>
       </td>
     </tr>
   </table>
