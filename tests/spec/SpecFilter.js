@@ -79,5 +79,17 @@ describe('Filter', () => {
 
       expect(children.every(child => !child.checked)).toBe(true);
     });
+
+    it('checking parent fires child change events', () => {
+      const changeSpy = jasmine.createSpy();
+
+      children[0].addEventListener('change', changeSpy);
+
+      parent.checked = true;
+      parent.dispatchEvent(new Event('change'));
+
+      expect(changeSpy).toHaveBeenCalled();
+    });
+  });
   });
 });
