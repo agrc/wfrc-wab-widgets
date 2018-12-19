@@ -138,4 +138,21 @@ describe('Filter', () => {
       }).toThrow(new Error('Layer: BadLayerName not found in web map!'));
     });
   });
+
+  describe('getPhaseQuery', () => {
+    const tests = [
+      [['FCPhase', 1, 2, 3, 4], [0, 1, 2], 'FCPhase IN (1, 2, 3)'],
+      [['FCPhase', 1, 2, 3, 'NULL'], [1, 3], 'FCPhase IN (2, NULL)'],
+      [['DraftPhase', 1, '1, 12', '1, 12, 123'], [0, 1], 'DraftPhase IN (1, 12)'],
+      [['DraftPhase', 1, '1, 12', '1, 12, 123'], [1], 'DraftPhase IN (1, 12)'],
+      [['FCPhase', 1, 2, 3], [0, 1, 2, 3], 'FCPhase IN (1, 2, 3)'],
+      [['FCPhase', 1, 2, 3], [3], 'FCPhase IN ()']
+    ];
+
+    tests.forEach(([info, indexes, expected]) => {
+      it('returns the appropriate definition queries', () => {
+        expect(testWidget.getPhaseQuery(info, indexes)).toEqual(expected);
+      });
+    });
+  });
 });

@@ -44,5 +44,18 @@
     "roadwayPointProjects": "Roadway Point Projects",
     "transitPointProjects": "Transit Point Projects",
     "activeTransportationPointProjects": "Active Transportation Point Projects"
+  },
+  "phases": {
+    "roadwayPointProjects": ["FCPhase", 1, 2, 3, 4],
+    "roadwayLineProjects": ["FCPhase", 1, 2, 3, 4],
+    "magRoadwayLineProjects": ["Phase", 1, 2, 3, 4],
+    "magPointProjects": ["Phase", 1, 2, 3, 4],
+    "transitPointProjects": ["FCPhase", 1, 2, 3, "NULL"],
+    "transitLineProjects": ["FCPhase", 1, 2, 3, "NULL"],
+    "magTransitLineProjects": ["Phase", 1, 2, 3, 4],
+    "activeTransportationPointProjects": ["Phase", 1, 2, 3],
+    "activeTransportationLineProjects": ["Phase", 1, 2, 3],
+    "centers": ["DraftPhase", 1, "1, 12", "1, 12, 123"],
+    "generalLandUse": ["DraftPhase", 1, "1, 12", "1, 12, 123"]
   }
 }

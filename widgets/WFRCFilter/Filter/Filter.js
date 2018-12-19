@@ -28,6 +28,7 @@ export default declare([_WidgetBase, _TemplatedMixin], {
 
     const layers = this.getLayers(this.config.layerNames, this.map);
 
+    // modes
     this.modes = {
       roads: [
         layers.roadwayPointProjects,
@@ -53,6 +54,38 @@ export default declare([_WidgetBase, _TemplatedMixin], {
         this.modes[mode].forEach(layer => layer.setVisibility(checkbox.checked));
       });
     });
+
+    // phases
+    const phaseCheckboxes = Array.from(this.domNode.getElementsByClassName('phasing-checkbox'));
+    const onPhaseCheckboxChange = () => {
+      const checkedPhaseIndexes = phaseCheckboxes.filter(box => box.checked).map(box => parseInt(box.value, 10));
+
+      Object.keys(this.config.phases).forEach(phaseLayerKey => {
+        const info = this.config.phases[phaseLayerKey];
+
+        layers[phaseLayerKey].setDefinitionExpression(this.getPhaseQuery(info, checkedPhaseIndexes));
+      });
+    };
+
+    phaseCheckboxes.forEach(checkbox => {
+      checkbox.addEventListener('change', onPhaseCheckboxChange);
+    });
+  },
+
+  getPhaseQuery(phaseInfo, checkedPhaseIndexes) {
+    // translate the phase info into a definition query taking into account the selected phases
+    console.log('Filter.getPhaseQuery');
+
+    const filterPhase = (_, i) => {
+      return checkedPhaseIndexes.includes(i);
+    };
+
+    const joinTxt = ', ';
+    const dedup = (inStatement) => {
+      return [... new Set(inStatement.split(joinTxt))].join(joinTxt);
+    };
+
+    return `${phaseInfo[0]} IN (${dedup(phaseInfo.slice(1).filter(filterPhase).join(joinTxt))})`;
   },
 
   setupParentChildCheckboxes() {
