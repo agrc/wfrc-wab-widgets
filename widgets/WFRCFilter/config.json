@@ -26,5 +26,23 @@
       "resetFilters": "Reset Filters"
     },
     "spanish": {}
+  },
+  "layerNames": {
+    "boundaries": "Boundaries",
+    "generalLandUse": "General Land Use",
+    "centers": "Centers",
+    "neighboringLandUse": "Neighboring Land Use",
+    "neighboringLines": "Neighboring Lines",
+    "magTransitLineProjects": "MAG Transit Line Projects",
+    "magRoadwayLineProjects": "MAG Roadway Line Projects",
+    "roadwayLineProjects": "Roadway Line Projects",
+    "transitLineProjects": "Transit Line Projects",
+    "activeTransportationLineProjects": "Active Transportation Line Projects",
+    "existingActiveTransportationNetwork": "Existing Active Transportation Network",
+    "neighboringPoints": "Neighboring Points",
+    "magPointProjects": "MAG Point Projects",
+    "roadwayPointProjects": "Roadway Point Projects",
+    "transitPointProjects": "Transit Point Projects",
+    "activeTransportationPointProjects": "Active Transportation Point Projects"
   }
 }

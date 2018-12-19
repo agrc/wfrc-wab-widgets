@@ -11,5 +11,7 @@ export default declare([BaseWidget], {
       config: this.config,
       map: this.map
     }, this.widgetContainer);
+
+    this.mainWidget.init();
   }
 });

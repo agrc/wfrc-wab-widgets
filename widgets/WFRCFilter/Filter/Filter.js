@@ -19,8 +19,40 @@ export default declare([_WidgetBase, _TemplatedMixin], {
 
     this.modes.indeterminate = true;
     this.phasing.indeterminate = true;
+  },
+
+  init() {
+    console.log('Filter.init');
 
     this.setupParentChildCheckboxes();
+
+    const layers = this.getLayers(this.config.layerNames, this.map);
+
+    this.modes = {
+      roads: [
+        layers.roadwayPointProjects,
+        layers.roadwayLineProjects,
+        layers.magRoadwayLineProjects,
+        layers.magPointProjects
+      ],
+      transit: [
+        layers.transitPointProjects,
+        layers.transitLineProjects,
+        layers.magTransitLineProjects
+      ],
+      bikeped: [
+        layers.activeTransportationPointProjects,
+        layers.activeTransportationLineProjects
+      ]
+    };
+
+    Object.keys(this.modes).forEach(mode => {
+      const checkbox = this[mode];
+
+      checkbox.addEventListener('change', () => {
+        this.modes[mode].forEach(layer => layer.setVisibility(checkbox.checked));
+      });
+    });
   },
 
   setupParentChildCheckboxes() {
@@ -67,5 +99,29 @@ export default declare([_WidgetBase, _TemplatedMixin], {
         });
       }
     });
+  },
+
+  getLayers(layerNames, map) {
+    console.log('Filter.getLayers');
+
+    const layerNameLookup = {};
+
+    map.itemInfo.itemData.operationalLayers.forEach(layerInfo => {
+      layerNameLookup[layerInfo.title] = layerInfo.layerObject;
+    });
+
+    const layers = {};
+
+    Object.keys(layerNames).forEach(name => {
+      const layer = layerNameLookup[layerNames[name]];
+
+      if (!layer) {
+        throw new Error(`Layer: ${layerNames[name]} not found in web map!`);
+      }
+
+      layers[name] = layer;
+    });
+
+    return layers;
   }
 });

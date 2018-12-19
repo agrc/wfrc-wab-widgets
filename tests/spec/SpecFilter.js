@@ -5,10 +5,26 @@ import configJson from 'dojo/text!widgets/WFRCFilter/config.json';
 
 describe('Filter', () => {
   let testWidget;
+  const centersTitle = 'Centers';
+  const centersLayer = {};
+  const mockMap = {
+    itemInfo: {
+      itemData: {
+        operationalLayers: [{
+          title: centersTitle,
+          layerObject: centersLayer
+        }, {
+          title: 'Boundaries',
+          layerObject: {}
+        }]
+      }
+    }
+  };
 
   beforeEach(() => {
     testWidget = new Filter({
-      config: JSON.parse(configJson)
+      config: JSON.parse(configJson),
+      map: mockMap
     }, domConstruct.create('div', {}, document.body));
   });
 
@@ -25,6 +41,8 @@ describe('Filter', () => {
     let children;
 
     beforeEach(() => {
+      testWidget.setupParentChildCheckboxes();
+
       const table = testWidget.domNode.querySelectorAll('table')[0];
       const checkboxes = Array.from(table.querySelectorAll('input'));
       parent = checkboxes[0];
@@ -91,5 +109,33 @@ describe('Filter', () => {
       expect(changeSpy).toHaveBeenCalled();
     });
   });
+
+  describe('getLayers', () => {
+    it('returns the correct layer objects', () => {
+      const config = {
+        layerNames: {
+          boundaries: 'Boundaries',
+          centers: centersTitle
+        }
+      };
+
+      const result = testWidget.getLayers(config.layerNames, mockMap);
+
+      expect(Object.keys(result).length).toBe(2);
+      expect(result.centers).toBe(centersLayer);
+    });
+
+    it('throws error if there is no matching layer in web map', () => {
+      const config = {
+        layerNames: {
+          boundaries: 'BadLayerName',
+          centers: centersTitle
+        }
+      };
+
+      expect(() => {
+        testWidget.getLayers(config.layerNames, mockMap);
+      }).toThrow(new Error('Layer: BadLayerName not found in web map!'));
+    });
   });
 });
