@@ -47,12 +47,14 @@ export default declare([_WidgetBase, _TemplatedMixin], {
       ]
     };
 
+    const onModeCheckboxChange = (mode) => {
+      this.modes[mode].forEach(layer => layer.setVisibility(this[mode].checked));
+    };
+
     Object.keys(this.modes).forEach(mode => {
       const checkbox = this[mode];
 
-      checkbox.addEventListener('change', () => {
-        this.modes[mode].forEach(layer => layer.setVisibility(checkbox.checked));
-      });
+      checkbox.addEventListener('change', onModeCheckboxChange.bind(this, [mode]));
     });
 
     // phases
@@ -70,6 +72,10 @@ export default declare([_WidgetBase, _TemplatedMixin], {
     phaseCheckboxes.forEach(checkbox => {
       checkbox.addEventListener('change', onPhaseCheckboxChange);
     });
+
+    // make map layers reflect initial state of filter controls
+    onPhaseCheckboxChange();
+    Object.keys(this.modes).forEach(onModeCheckboxChange);
   },
 
   getPhaseQuery(phaseInfo, checkedPhaseIndexes) {
