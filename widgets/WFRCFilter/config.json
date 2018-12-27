@@ -57,5 +57,19 @@
     "activeTransportationLineProjects": ["Phase", 1, 2, 3],
     "centers": ["DraftPhase", 1, "1, 12", "1, 12, 123"],
     "generalLandUse": ["DraftPhase", 1, "1, 12", "1, 12, 123"]
+  },
+  "colors": {
+    "phase1": "#E21717",
+    "phase2": "#0D5E9B",
+    "phase3": "#149E15",
+    "unfunded": "#FA8C1D",
+    "metro": "#BA2B37",
+    "regional": "#E64C00",
+    "town": "#E69800",
+    "neighborhood": "#0070FF",
+    "employment": "#FF0000",
+    "industrial": "#C500FF",
+    "special": "#4E4E4E",
+    "green": "#728944"
   }
 }

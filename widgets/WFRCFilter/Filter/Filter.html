@@ -69,7 +69,7 @@
         </label>
       </td>
       <td>
-        <div class="legend-swatch" style="background-color: #E21717;"></div>
+        <div class="legend-swatch" style="background-color: ${config.colors.phase1}"></div>
       </td>
     </tr>
     <tr>
@@ -79,7 +79,7 @@
         </label>
       </td>
       <td>
-        <div class="legend-swatch" style="background-color: #0D5E9B;"></div>
+        <div class="legend-swatch" style="background-color: ${config.colors.phase2}"></div>
       </td>
     </tr>
     <tr>
@@ -89,7 +89,7 @@
         </label>
       </td>
       <td>
-        <div class="legend-swatch" style="background-color: #149E15;"></div>
+        <div class="legend-swatch" style="background-color: ${config.colors.phase3}"></div>
       </td>
     </tr>
     <tr>
@@ -99,7 +99,7 @@
         </label>
       </td>
       <td>
-        <div class="legend-swatch" style="background-color: #FA8C1D;"></div>
+        <div class="legend-swatch" style="background-color: ${config.colors.unfunded}"></div>
       </td>
     </tr>
   </table>
@@ -119,15 +119,15 @@
     <tr>
       <td>
         <label class="indent">
-          <input type="checkbox" checked/> ${nls.centers}
+          <input type="checkbox" data-dojo-attach-point="centers" checked/> ${nls.centers}
         </label>
       </td>
       <td class="vertical">
         <div class="vertical-swatch-container">
-          <div class="vertical-swatch" style="background: #BA2B37"></div> <!-- metro -->
-          <div class="vertical-swatch" style="background: #E64C00"></div> <!-- regional -->
-          <div class="vertical-swatch" style="background: #E69800"></div> <!-- town -->
-          <div class="vertical-swatch" style="background: #0070FF"></div> <!-- neighborhood -->
+          <div class="vertical-swatch" style="background: ${config.colors.metro}"></div> <!-- metro -->
+          <div class="vertical-swatch" style="background: ${config.colors.regional}"></div> <!-- regional -->
+          <div class="vertical-swatch" style="background: ${config.colors.town}"></div> <!-- town -->
+          <div class="vertical-swatch" style="background: ${config.colors.neighborhood}"></div> <!-- neighborhood -->
         </div>
         <img src="widgets/WFRCFilter/Filter/css/images/question_mark.svg" alt="question mark" class="question-mark">
       </td>
@@ -135,14 +135,15 @@
     <tr>
       <td>
         <label class="indent">
-          <input type="checkbox" checked/> ${nls.generalLandUse}
+          <input type="checkbox" data-dojo-attach-point="generalLandUse" checked/> ${nls.generalLandUse}
         </label>
       </td>
       <td class="vertical">
         <div class="vertical-swatch-container">
-          <div class="vertical-swatch" style="background: #FF0000"></div> <!-- employment -->
-          <div class="vertical-swatch" style="background: #C500FF"></div> <!-- industrial -->
-          <div class="vertical-swatch" style="background: #4E4E4E"></div> <!-- other -->
+          <div class="vertical-swatch" style="background: ${config.colors.employment}"></div>
+          <div class="vertical-swatch" style="background: ${config.colors.industrial}"></div>
+          <div class="vertical-swatch" style="background: ${config.colors.special}"></div>
+          <div class="vertical-swatch" style="background: ${config.colors.green}"></div>
         </div>
         <img src="widgets/WFRCFilter/Filter/css/images/question_mark.svg" alt="question mark" class="question-mark">
       </td>
