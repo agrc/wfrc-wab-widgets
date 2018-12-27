@@ -4,6 +4,8 @@ import declare from 'dojo/_base/declare';
 import template from 'dojo/text!./Filter.html';
 
 
+const landUseLayers = ['centers', 'generalLandUse'];
+
 export default declare([_WidgetBase, _TemplatedMixin], {
   baseClass: 'wfrc-filter',
   templateString: template,
@@ -63,6 +65,11 @@ export default declare([_WidgetBase, _TemplatedMixin], {
       const checkedPhaseIndexes = phaseCheckboxes.filter(box => box.checked).map(box => parseInt(box.value, 10));
 
       Object.keys(this.config.phases).forEach(phaseLayerKey => {
+        // apply phasing filter to land use layers only if the byPhasing checkbox is checked
+        if (landUseLayers.indexOf(phaseLayerKey) > -1 && !this.byPhasing.checked) {
+          return;
+        }
+
         const info = this.config.phases[phaseLayerKey];
 
         layers[phaseLayerKey].setDefinitionExpression(this.getPhaseQuery(info, checkedPhaseIndexes));
@@ -83,6 +90,17 @@ export default declare([_WidgetBase, _TemplatedMixin], {
       [this.generalLandUse, layers.generalLandUse]
     ];
     singleLayerMappings.forEach(mapping => this.wireCheckboxToLayer(...mapping));
+
+    this.byPhasing.addEventListener('change', () => {
+      if (this.byPhasing.checked) {
+        onPhaseCheckboxChange();
+      } else {
+        landUseLayers.forEach(key => {
+          const layer = layers[key];
+          layer.setDefinitionExpression(layer.defaultDefinitionExpression);
+        });
+      }
+    });
   },
 
   wireCheckboxToLayer(checkbox, layer) {
@@ -116,7 +134,7 @@ export default declare([_WidgetBase, _TemplatedMixin], {
       let pauseChildrenChangeEvents = false;
       if (checkboxes.length > 1) {
         const parent = checkboxes[0];
-        const children = Array.from(checkboxes).slice(1);
+        const children = Array.from(checkboxes).slice(1).filter(checkbox => checkbox !== this.byPhasing);
 
         parent.addEventListener('change', () => {
           pauseChildrenChangeEvents = true;
