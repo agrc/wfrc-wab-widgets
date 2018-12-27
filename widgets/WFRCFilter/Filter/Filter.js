@@ -76,6 +76,19 @@ export default declare([_WidgetBase, _TemplatedMixin], {
     // make map layers reflect initial state of filter controls
     onPhaseCheckboxChange();
     Object.keys(this.modes).forEach(onModeCheckboxChange);
+
+    const singleLayerMappings = [
+      // checkbox, associated layer
+      [this.centers, layers.centers],
+      [this.generalLandUse, layers.generalLandUse]
+    ];
+    singleLayerMappings.forEach(mapping => this.wireCheckboxToLayer(...mapping));
+  },
+
+  wireCheckboxToLayer(checkbox, layer) {
+    console.log('Filter.wirecheckboxToLayer', arguments);
+
+    checkbox.addEventListener('change', () => layer.setVisibility(checkbox.checked));
   },
 
   getPhaseQuery(phaseInfo, checkedPhaseIndexes) {
