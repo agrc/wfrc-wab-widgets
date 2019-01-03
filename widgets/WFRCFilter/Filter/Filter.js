@@ -21,6 +21,7 @@ export default declare([_WidgetBase, _TemplatedMixin], {
 
     this.modes.indeterminate = true;
     this.phasing.indeterminate = true;
+    this.childrenCheckboxes = [this.byPhasing];
   },
 
   init() {
@@ -106,6 +107,9 @@ export default declare([_WidgetBase, _TemplatedMixin], {
         });
       }
     });
+
+    // store checkboxes that are initially checked for use in resetFilters
+    this.checkboxesCheckedByDefault = Array.from(this.domNode.querySelectorAll('input[checked]'));
   },
 
   wireCheckboxToLayer(checkbox, layer) {
@@ -151,6 +155,9 @@ export default declare([_WidgetBase, _TemplatedMixin], {
       if (checkboxes.length > 1) {
         const parent = checkboxes[0];
         const children = Array.from(checkboxes).slice(1).filter(checkbox => checkbox !== this.byPhasing);
+
+        // store list of children checkboxes for use in resetFilters
+        this.childrenCheckboxes = this.childrenCheckboxes.concat(children);
 
         parent.addEventListener('change', () => {
           pauseChildrenChangeEvents = true;
@@ -209,5 +216,17 @@ export default declare([_WidgetBase, _TemplatedMixin], {
     });
 
     return layers;
+  },
+
+  resetFilters() {
+    // summary:
+    //    reset filter controls to default values
+    console.log('Filter.resetFilters');
+
+    this.childrenCheckboxes.forEach(checkbox => {
+      checkbox.checked = this.checkboxesCheckedByDefault.indexOf(checkbox) > -1;
+
+      checkbox.dispatchEvent(new Event('change'));
+    });
   }
 });
