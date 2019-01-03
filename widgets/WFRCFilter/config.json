@@ -70,6 +70,8 @@
     "employment": "#FF0000",
     "industrial": "#C500FF",
     "special": "#4E4E4E",
-    "green": "#728944"
+    "green": "#728944",
+    "neighboringLandUse": "#ABC3C2",
+    "planningBoundaries": "#ABC3C2"
   }
 }

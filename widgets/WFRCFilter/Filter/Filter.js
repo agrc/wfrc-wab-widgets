@@ -80,17 +80,22 @@ export default declare([_WidgetBase, _TemplatedMixin], {
       checkbox.addEventListener('change', onPhaseCheckboxChange);
     });
 
+    const singleLayerMappings = [
+      // checkbox, associated layer
+      [this.centers, layers.centers],
+      [this.generalLandUse, layers.generalLandUse],
+      [this.existingBikeped, layers.existingActiveTransportationNetwork],
+      [this.neighboringLandUse, layers.neighboringLandUse],
+      [this.planningBoundaries, layers.boundaries],
+      [this.neighboringProjects, [layers.neighboringPoints, layers.neighboringLines]]
+    ];
+    singleLayerMappings.forEach(mapping => this.wireCheckboxToLayer(...mapping));
+
     // make map layers reflect initial state of filter controls
     onPhaseCheckboxChange();
     Object.keys(this.modes).forEach(onModeCheckboxChange);
 
-    const singleLayerMappings = [
-      // checkbox, associated layer
-      [this.centers, layers.centers],
-      [this.generalLandUse, layers.generalLandUse]
-    ];
-    singleLayerMappings.forEach(mapping => this.wireCheckboxToLayer(...mapping));
-
+    // land use filter by phasing checkbox
     this.byPhasing.addEventListener('change', () => {
       if (this.byPhasing.checked) {
         onPhaseCheckboxChange();
@@ -106,7 +111,18 @@ export default declare([_WidgetBase, _TemplatedMixin], {
   wireCheckboxToLayer(checkbox, layer) {
     console.log('Filter.wirecheckboxToLayer', arguments);
 
-    checkbox.addEventListener('change', () => layer.setVisibility(checkbox.checked));
+    const updateVisibility = () => {
+      if (Array.isArray(layer)) {
+        layer.forEach(l => l.setVisibility(checkbox.checked));
+      } else {
+        layer.setVisibility(checkbox.checked);
+      }
+    };
+
+    checkbox.addEventListener('change', updateVisibility);
+
+    // set layer to match initial state of checkbox
+    updateVisibility();
   },
 
   getPhaseQuery(phaseInfo, checkedPhaseIndexes) {

@@ -162,7 +162,7 @@
     <tr>
       <td>
         <label class="indent">
-          <input type="checkbox" /> ${nls.existingBikeped}
+          <input type="checkbox" data-dojo-attach-point="existingBikeped" /> ${nls.existingBikeped}
         </label>
       </td>
       <td>
@@ -172,28 +172,31 @@
     <tr>
       <td>
         <label class="indent">
-          <input type="checkbox" /> ${nls.neighboringProjects}
+          <input type="checkbox" data-dojo-attach-point="neighboringProjects" /> ${nls.neighboringProjects}
         </label>
+      </td>
+      <td>
+        <img class="legend-swatch" src="widgets/WFRCFilter/Filter/css/images/solid_line-gray.png" alt="solid gray line">
       </td>
     </tr>
     <tr>
       <td>
         <label class="indent">
-          <input type="checkbox" /> ${nls.neighboringLandUse}
+          <input type="checkbox" data-dojo-attach-point="neighboringLandUse" /> ${nls.neighboringLandUse}
         </label>
       </td>
       <td>
-        <div class="legend-swatch" style="background-color: #ABC3C2;"></div>
+        <div class="legend-swatch" style="background-color: ${config.colors.neighboringLandUse};"></div>
       </td>
     </tr>
     <tr>
       <td>
         <label class="indent">
-          <input type="checkbox" /> ${nls.planningBoundaries}
+          <input type="checkbox" data-dojo-attach-point="planningBoundaries" /> ${nls.planningBoundaries}
         </label>
       </td>
       <td>
-        <div class="legend-swatch" style="background-color: #ABC3C2;"></div>
+        <div class="legend-swatch" style="background-color: ${config.colors.planningBoundaries};"></div>
       </td>
     </tr>
     <tr>
