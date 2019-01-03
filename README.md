@@ -4,7 +4,7 @@ Web App Builder Widgets built for Wasatch Front Regional Council
 [Requirements](https://docs.google.com/document/d/1h_7FTRrov3WgGAcQXJFpw87Adz9oFyiwgOkJOsYnqLw/edit)  
 [Mockups](https://docs.google.com/presentation/d/1gkYFpZ-4EedxJpL895hKCi5OjegASWdz1YrS2kAYN6Y/edit?ts=5b9195cc#slide=id.p)  
 Production Application: [http://wfrc.org/rtp-2019-phasing/](http://wfrc.org/rtp-2019-phasing/)  
-[Production Web Map](http://wfrc.maps.arcgis.com/home/webmap/viewer.html?webmap=07eb046bebab4791a084395c9362d52a)
+[Production Web Map](https://wfrc.maps.arcgis.com/home/webmap/viewer.html?webmap=0ee014ea3aea4231b47e8da289b8acc0)
 
 ## General Setup for All Widgets
 ### Add a polyfill for older browsers
