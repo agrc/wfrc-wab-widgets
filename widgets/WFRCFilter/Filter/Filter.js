@@ -2,6 +2,10 @@ import _TemplatedMixin from 'dijit/_TemplatedMixin';
 import _WidgetBase from 'dijit/_WidgetBase';
 import declare from 'dojo/_base/declare';
 import template from 'dojo/text!./Filter.html';
+import Tooltip from 'dijit/Tooltip';
+import landUseLegendTemplate from 'dojo/text!./LandUseLegend.html';
+import centersLegendTemplate from 'dojo/text!./CentersLegend.html';
+import dojoString from 'dojo/string';
 
 
 const landUseLayers = ['centers', 'generalLandUse'];
@@ -110,6 +114,22 @@ export default declare([_WidgetBase, _TemplatedMixin], {
 
     // store checkboxes that are initially checked for use in resetFilters
     this.checkboxesCheckedByDefault = Array.from(this.domNode.querySelectorAll('input[checked]'));
+
+    // legend popups
+    const landUseTooltip = new Tooltip({
+      connectId: this.generalLandUseLegend,
+      label: dojoString.substitute(landUseLegendTemplate, this),
+      showDelay: 100,
+      position: ['below']
+    });
+    landUseTooltip.startup();
+    const centersTooltip = new Tooltip({
+      connectId: this.centersLegend,
+      label: dojoString.substitute(centersLegendTemplate, this),
+      showDelay: 100,
+      position: ['above']
+    });
+    centersTooltip.startup();
   },
 
   wireCheckboxToLayer(checkbox, layer) {

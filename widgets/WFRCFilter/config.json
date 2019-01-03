@@ -23,7 +23,15 @@
       "neighboringProjects": "Neighboring Projects",
       "neighboringLandUse": "Neighboring Land Use",
       "planningBoundaries": "Planning Boundaries",
-      "resetFilters": "Reset Filters"
+      "resetFilters": "Reset Filters",
+      "employmentDistrict": "Employment District",
+      "industrialDistrict": "Industrial District",
+      "specialDistrict": "Special District",
+      "greenInfrastructure": "Green Infrastructure",
+      "metropolitanCenter": "Metropolitan Center",
+      "regionalCenter": "Regional Center",
+      "townCenter": "Town Center",
+      "neighborhoodCenter": "Neighborhood Center"
     },
     "spanish": {}
   },
