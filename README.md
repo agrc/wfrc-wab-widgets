@@ -156,6 +156,38 @@ This widget takes the same configuration parameters as the [constructor for the 
 
 Examples of loading different layers can be found in the [layer-selector tests](https://github.com/agrc-widgets/layer-selector/tree/v1.1.2/tests).
 
+### WFRC Filter
+This is a in-panel widget that contains controls for toggling and filtering layers as well as legend swatches.
+
+Here is an [spreadsheet](https://docs.google.com/spreadsheets/d/1CaMtQzCAKHTyewZBNyw0S4xqu7_5r0WxPgUzVPSpq0o/edit#gid=0) (managed by WFRC) that shows the relationship between the controls and layers in the [web map](https://wfrc.maps.arcgis.com/home/webmap/viewer.html?webmap=0ee014ea3aea4231b47e8da289b8acc0).
+
+#### Configuration
+`language` - `[string]`  
+The language that the strings in the widget should be displayed as. Possible values are `english` and `spanish`. Defaults to `english`.
+
+`strings` - `[object]`  
+The language-specific strings to be used in the widget.
+
+`layerNames` - `[object]`  
+An object that stores the names of the layers as they are defined in the web map.
+
+`phases` - `[object]`  
+An object where the keys are the layer keys from `layerNames` above and the values are an array defining the definition query for displaying different phases for the layer. The format for the array is:
+```
+[<FieldName>, <phase 1 value>, <phase 2 value>, <phase 3 value>, <unfunded value>]
+```
+For example, a definition query for phases 1 and 4 for this array:
+```js
+["FCPhase", 1, 2, 3, 4]
+```
+would be...
+```sql
+FCPhase IN (1, 4)
+```
+
+`colors` - `[object]`  
+An object defining most of the colors used in the legend controls.
+
 ## Development
 [Esri Yeoman Generators](https://github.com/Esri/generator-esri-appbuilder-js)  
 [Wrapped Widget Example](https://github.com/gbochenek/wab-test-example)
