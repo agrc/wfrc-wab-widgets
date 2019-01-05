@@ -156,6 +156,16 @@ This widget takes the same configuration parameters as the [constructor for the 
 
 Examples of loading different layers can be found in the [layer-selector tests](https://github.com/agrc-widgets/layer-selector/tree/v1.1.2/tests).
 
+To configure an imagery layer to be black and white you must use the following config:
+```json
+{
+  "id": "Imagery_BW",
+  "Factory": "WebTiledLayer",
+  "url": "https://discover.agrc.utah.gov/login/path/your-quad-word-here/tiles/utah/${level}/${col}/${row}"
+}
+```
+Remember to put your quad word in the URL. Also note that the id must note be changed.
+
 ### WFRC Filter
 This is a in-panel widget that contains controls for toggling and filtering layers as well as legend swatches.
 

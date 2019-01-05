@@ -8,3 +8,7 @@
 .layer-selector .layer-selector-items {
   max-width: 125px;
 }
+
+div#map_Imagery_BW img {
+  filter: grayscale(1);
+}
