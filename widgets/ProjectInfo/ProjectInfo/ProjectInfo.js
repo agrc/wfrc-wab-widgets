@@ -35,6 +35,14 @@ export default declare([_WidgetBase, _TemplatedMixin], {
   onMapClick(clickEvent) {
     console.log('ProjectInfo.onMapClick', clickEvent);
 
+    // show spinner
+    this.spinner.className = this.spinner.className.replace(' hidden', '');
+
+    if (this.detailsWidgets) {
+      this.detailsWidgets.forEach(widget => widget.destroy());
+      this.detailsWidgets = null;
+    }
+
     const query = new Query();
     query.geometry = clickEvent.mapPoint;
     query.distance = this.getTolerance(this.config.clickPixelTolerance);
@@ -79,11 +87,6 @@ export default declare([_WidgetBase, _TemplatedMixin], {
 
     features = this.sortFeatures(features);
 
-    if (this.detailsWidgets) {
-      this.detailsWidgets.forEach(widget => widget.destroy());
-      this.detailsWidgets = null;
-    }
-
     if (features.length > 0) {
       this.instructions.className = 'hidden';
 
@@ -106,6 +109,9 @@ export default declare([_WidgetBase, _TemplatedMixin], {
     } else {
       this.instructions.className = '';
     }
+
+    // hide spinner
+    this.spinner.className += ' hidden';
   },
 
   sortFeatures(features) {

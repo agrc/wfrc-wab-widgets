@@ -19,26 +19,13 @@ describe('ProjectInfo', () => {
     expect(testWidget).toEqual(jasmine.any(ProjectInfo));
   });
 
-  describe('setFeatures', () => {
-    const feature = {
-      attributes: {
-        blah: 'asdf'
-      },
-      geometry: {
-        type: 'polyline'
-      },
-      fields: [{
-        name: 'blah',
-        alias: 'blah blah'
-      }],
-      displayField: 'blah'
-    };
-
+  describe('onMapClick', () => {
     it('destroys any previous widgets', () => {
       const widget = { destroy: jasmine.createSpy('destroy') };
       testWidget.detailsWidgets = [widget];
+      testWidget.getTolerance = () => 10;
 
-      testWidget.setFeatures([feature, feature]);
+      testWidget.onMapClick({});
 
       expect(widget.destroy).toHaveBeenCalled();
     });
