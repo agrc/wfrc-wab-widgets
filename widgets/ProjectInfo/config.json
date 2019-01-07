@@ -5,6 +5,24 @@
   "commentsEnabled": true,
   "newCommentsOpenUntil": "9999-01-31T00:00:00.000Z",
   "commentsTableUrl": "https://gis.wfrc.org/arcgis/rest/services/RTP/RTP_2019_2050_DraftPhased/FeatureServer/14",
+  "layerSortOrder": [
+    "Roadway Point Projects",
+    "Roadway Line Projects",
+    "MAG Roadway Line Projects",
+    "MAG Point Projects",
+    "Transit Point Projects",
+    "Transit Line Projects",
+    "MAG Transit Line Projects",
+    "Active Transportation Point Projects",
+    "Active Transportation Line Projects",
+    "Existing Active Transportation Network",
+    "General Land Use",
+    "Centers",
+    "Neighboring Points",
+    "Neighboring Lines",
+    "Neighboring Land Use",
+    "Boundaries"
+  ],
   "language": "english",
   "strings": {
     "english": {

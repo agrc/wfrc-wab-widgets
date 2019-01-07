@@ -43,4 +43,18 @@ describe('ProjectInfo', () => {
       expect(widget.destroy).toHaveBeenCalled();
     });
   });
+
+  describe('sortFeatures', () => {
+    it('sorts features accordining to config', () => {
+      const feature1 = { layerName: 'layer1' };
+      const feature4 = { layerName: 'layer4' };
+      const feature2 = { layerName: 'layer2' };
+      const feature3 = { layerName: 'layer3' };
+      const features = [feature1, feature4, feature2, feature3];
+      const expected = [feature1, feature2, feature3, feature4];
+      testWidget.config.layerSortOrder = ['layer1', 'layer2', 'layer3', 'layer4'];
+
+      expect(testWidget.sortFeatures(features)).toEqual(expected);
+    });
+  });
 });

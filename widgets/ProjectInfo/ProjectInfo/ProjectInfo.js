@@ -48,6 +48,7 @@ export default declare([_WidgetBase, _TemplatedMixin], {
           feature.fields = layer.fields;
           feature.displayField = layer.displayField;
           feature.layerID = layer.id;
+          feature.layerName = layer.name;
 
           return feature;
         });
@@ -70,6 +71,8 @@ export default declare([_WidgetBase, _TemplatedMixin], {
 
   setFeatures(features) {
     console.log('ProjectInfo:setFeatures', arguments);
+
+    features = this.sortFeatures(features);
 
     if (this.detailsWidgets) {
       this.detailsWidgets.forEach(widget => widget.destroy());
@@ -98,5 +101,25 @@ export default declare([_WidgetBase, _TemplatedMixin], {
     } else {
       this.instructions.className = '';
     }
+  },
+
+  sortFeatures(features) {
+    // sorts the features according to the featureLayerOrder in the config
+    console.log('ProjectInfo:sortFeatures', arguments);
+
+    const order = this.config.layerSortOrder;
+
+    return features.sort((first, second) => {
+      const firstIndex = order.indexOf(first.layerName);
+      const secondIndex = order.indexOf(second.layerName);
+
+      if (firstIndex < secondIndex) {
+        return -1;
+      } else if (firstIndex === secondIndex) {
+        return 0;
+      }
+
+      return 1;
+    });
   }
 });

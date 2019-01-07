@@ -53,6 +53,9 @@ The language that the strings in the widget should be displayed as. Possible val
 `strings` - `[object]`  
 The language-specific strings to be used in the widget.
 
+`layerSortOrder` - `[object]`  
+This controls the order that the features show up in the Project Information panel. It is an array of layer name as defined in the web map.
+
 ### Comments
 This widget is embedded within the ProjectInfo widget. No need to copy additional files. This widget will only be displayed for features with a `GlobalID` field.
 
