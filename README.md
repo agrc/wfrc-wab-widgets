@@ -206,7 +206,7 @@ An object defining most of the colors used in the legend controls.
 [Wrapped Widget Example](https://github.com/gbochenek/wab-test-example)
 
 ### Getting started
-1. Start Web App Builder: `node WebAppBuilderForArcGIS/server/server.js`
+1. Start Web App Builder: `cd ~/WebAppBuilderForArcGIS/server/ && node server.js`
 1. Create a test application in WAB and update the path to it in `Gruntfile.js`, if needed.
 1. Start local grunt (from project root): `grunt`
 1. Go to [http://<your machine name>:3344/webappbuilder/](http://<your machine name>:3344/webappbuilder/)
