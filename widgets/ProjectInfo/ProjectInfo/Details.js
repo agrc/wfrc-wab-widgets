@@ -156,10 +156,17 @@ export default declare([_WidgetBase, _TemplatedMixin], {
     coreFx.wipeIn({ node: this.body }).play();
 
     // this topic name needs to match what's in URLParams.js
-    topic.publish('url-params-on-project-click', {
-      guid: this.feature.attributes[GLOBALID_FIELD_NAME],
-      layerid: this.layerID
-    });
+
+    const guid = this.feature.attributes[GLOBALID_FIELD_NAME];
+
+    if (guid) {
+      topic.publish('url-params-on-project-click', {
+        guid,
+        layerid: this.layerID
+      });
+    } else {
+      console.warn(`no field named ${GLOBALID_FIELD_NAME} found in ${this.layerID}`);
+    }
   },
 
   onTitleClick() {
