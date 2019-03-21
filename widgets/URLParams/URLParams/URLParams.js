@@ -79,6 +79,11 @@ export default declare([_WidgetBase], {
       // to be picked up by BetterAbout
       window.URLParams.infopanel = params.infopanel;
     }
+
+    if (params.basemap) {
+      // to be picked up by LayerSelector
+      window.URLParams.basemap = params.basemap;
+    }
   },
 
   wireEvents() {
@@ -90,8 +95,15 @@ export default declare([_WidgetBase], {
       this.map.on('click', this.removeParams.bind(this, ['guid', 'layerid'])),
       topic.subscribe('url-params-on-infopanel-open', this.setParams.bind(this, { infopanel: 'open' })),
       topic.subscribe('url-params-on-infopanel-close', this.setParams.bind(this, { infopanel: 'closed' })),
-      topic.subscribe('url-params-on-map-click', this.setClickParams.bind(this))
+      topic.subscribe('url-params-on-map-click', this.setClickParams.bind(this)),
+      topic.subscribe('url-params-on-layer-selector-change', this.setBaseMap.bind(this))
     );
+  },
+
+  setBaseMap(basemap) {
+    console.log('URLParams:setBaseMap', arguments);
+
+    this.setParams({ basemap });
   },
 
   setClickParams(mapPoint) {
