@@ -66,6 +66,11 @@ export default declare([_WidgetBase], {
     } else {
       this.wireEvents();
     }
+
+    if (params.infopanel) {
+      // to be picked up by BetterAbout
+      window.URLParams.infopanel = params.infopanel;
+    }
   },
 
   wireEvents() {
@@ -74,7 +79,9 @@ export default declare([_WidgetBase], {
     this.own(
       this.map.on('extent-change', this.onMapExtentChange.bind(this)),
       topic.subscribe('url-params-on-project-click', this.setProjectParams.bind(this)),
-      this.map.on('click', this.removeParams.bind(this, ['guid', 'layerid']))
+      this.map.on('click', this.removeParams.bind(this, ['guid', 'layerid'])),
+      topic.subscribe('url-params-on-infopanel-open', this.setParams.bind(this, { infopanel: 'open' })),
+      topic.subscribe('url-params-on-infopanel-close', this.setParams.bind(this, { infopanel: 'closed' }))
     );
   },
 
