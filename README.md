@@ -106,6 +106,7 @@ This widget allows the application to be configured via URL parameters. Technica
 1. `guid` and `layerid` - These parameters load the application in a state as if the user had clicked on the specified project. They are dynamically updated each time the user expands a project to reveal its details. Note: this requires that the source layer have a GlobalID field.
   - example: `guid=%7BD4C8986B-942A-470F-A0D9-2F9BDF690851%7D&layerid=RTP_2019_2050_DraftPhased_1851`
 1. `infopanel` - This parameter controls whether the BetterAbout widget's parent panel (left sidebar in the Jewelry theme) is open or closed.
+1. `clickx` & `clicky` - These parameters act as if the user had clicked on the coordinates. This affects the ProjectInfo widget.
 
 #### Additional steps to add as an on-screen widget to WAB Developer Edition
 1. Add a new config object to the `widgetOnScreen.widgets` array in `/client/stemapp/predefined-apps/default/config.json` & `/client/stemapp/config.json`.

@@ -67,6 +67,14 @@ export default declare([_WidgetBase], {
       this.wireEvents();
     }
 
+    if (params.clickx && params.clicky) {
+      // to be picked up by ProjectInfo
+      window.URLParams.clickpoint = {
+        x: params.clickx,
+        y: params.clicky
+      };
+    }
+
     if (params.infopanel) {
       // to be picked up by BetterAbout
       window.URLParams.infopanel = params.infopanel;
@@ -81,8 +89,18 @@ export default declare([_WidgetBase], {
       topic.subscribe('url-params-on-project-click', this.setProjectParams.bind(this)),
       this.map.on('click', this.removeParams.bind(this, ['guid', 'layerid'])),
       topic.subscribe('url-params-on-infopanel-open', this.setParams.bind(this, { infopanel: 'open' })),
-      topic.subscribe('url-params-on-infopanel-close', this.setParams.bind(this, { infopanel: 'closed' }))
+      topic.subscribe('url-params-on-infopanel-close', this.setParams.bind(this, { infopanel: 'closed' })),
+      topic.subscribe('url-params-on-map-click', this.setClickParams.bind(this))
     );
+  },
+
+  setClickParams(mapPoint) {
+    console.log('URLParams:setClickParams');
+
+    this.setParams({
+      clickx: mapPoint.x,
+      clicky: mapPoint.y
+    });
   },
 
   onMapExtentChange(event) {
@@ -103,7 +121,7 @@ export default declare([_WidgetBase], {
     console.log('URLParams:setProjectParams', arguments);
 
     this.setParams(config);
-    this.removeParams(['x', 'y', 'scale']);
+    this.removeParams(['x', 'y', 'scale', 'clickx', 'clicky']);
   },
 
   setParams(params) {

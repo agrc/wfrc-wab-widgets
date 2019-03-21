@@ -5,6 +5,8 @@ import Details from './Details';
 import domConstruct from 'dojo/dom-construct';
 import Query from 'esri/tasks/query';
 import template from 'dojo/text!./ProjectInfo.html';
+import topic from 'dojo/topic';
+import Point from 'esri/geometry/Point';
 
 
 export default declare([_WidgetBase, _TemplatedMixin], {
@@ -29,6 +31,13 @@ export default declare([_WidgetBase, _TemplatedMixin], {
 
     if (window.URLParams && window.URLParams.project) {
       this.setFeatures([window.URLParams.project]);
+    } else if (window.URLParams && window.URLParams.clickpoint) {
+      this.onMapClick({
+        mapPoint: new Point({
+          ...window.URLParams.clickpoint,
+          spatialReference: this.map.spatialReference
+        })
+      });
     }
   },
 
@@ -71,7 +80,14 @@ export default declare([_WidgetBase, _TemplatedMixin], {
       }
 
       return [];
-    })).then(featureSets => this.setFeatures(featureSets.reduce((acc, val) => acc.concat(val), [])));
+    })).then(featureSets => {
+      const flattenedFeatures = featureSets.reduce((acc, val) => acc.concat(val), []);
+      this.setFeatures(flattenedFeatures);
+
+      if (flattenedFeatures.length > 0) {
+        topic.publish('url-params-on-map-click', clickEvent.mapPoint);
+      }
+    });
   },
 
   getTolerance(pixelTolerance) {
