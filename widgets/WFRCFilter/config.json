@@ -57,26 +57,103 @@
     "transitPointProjects": "Transit Point Projects"
   },
   "phases": {
-    "activeTransportationLineProjects": ["Phase", 1, 2, 3],
-    "activeTransportationPointProjects": ["Phase", 1, 2, 3],
-    "centers": ["DraftPhase", 1, "1, 12", "1, 12, 123"],
-    "generalLandUse": ["DraftPhase", 1, "1, 12", "1, 12, 123"],
-    "magActiveTransportationLineProjects": ["phase", 1, 2, 3],
-    "magActiveTransportationPointProjects": ["phase", 1, 2, 3],
-    "magPointProjects": ["Phase", 1, 2, 3, 4],
-    "magRoadwayLineProjects": ["Phase", 1, 2, 3, 4],
-    "magTransitLineProjects": ["Phase", 1, 2, 3, 4],
-    "magTransitPointProject": ["Phase", 1, 2, 3],
-    "roadwayLineProjects": ["FCPhase", 1, 2, 3, 4],
-    "roadwayPointProjects": ["FCPhase", 1, 2, 3, 4],
-    "transitLineProjects": ["FCPhase", 1, 2, 3, "NULL"],
-    "transitPointProjects": ["FCPhase", 1, 2, 3, "NULL"]
+    "activeTransportationLineProjects": [
+      "Phase",
+      1,
+      2,
+      3
+    ],
+    "activeTransportationPointProjects": [
+      "Proj_Phase",
+      1,
+      2,
+      3
+    ],
+    "centers": [
+      "DraftPhase",
+      1,
+      "1, 12",
+      "1, 12, 123"
+    ],
+    "generalLandUse": [
+      "DraftPhase",
+      1,
+      "1, 12",
+      "1, 12, 123"
+    ],
+    "magActiveTransportationLineProjects": [
+      "phase",
+      1,
+      2,
+      3
+    ],
+    "magActiveTransportationPointProjects": [
+      "phase",
+      1,
+      2,
+      3
+    ],
+    "magPointProjects": [
+      "Phase",
+      1,
+      2,
+      3,
+      4
+    ],
+    "magRoadwayLineProjects": [
+      "Phase",
+      1,
+      2,
+      3,
+      4
+    ],
+    "magTransitLineProjects": [
+      "Phase",
+      1,
+      2,
+      3,
+      4
+    ],
+    "magTransitPointProject": [
+      "Phase",
+      1,
+      2,
+      3
+    ],
+    "roadwayLineProjects": [
+      "FCPhase",
+      1,
+      2,
+      3,
+      4
+    ],
+    "roadwayPointProjects": [
+      "FCPhase",
+      1,
+      2,
+      3,
+      4
+    ],
+    "transitLineProjects": [
+      "FC_Phase",
+      1,
+      2,
+      3,
+      0
+    ],
+    "transitPointProjects": [
+      "FCPhase",
+      1,
+      2,
+      3,
+      0
+    ]
   },
   "colors": {
-    "phase1": "#E21717",
-    "phase2": "#0D5E9B",
-    "phase3": "#149E15",
-    "unfunded": "#FA8C1D",
+    "phase1": "#890405",
+    "phase2": "#054BA4",
+    "phase3": "#419F15",
+    "unfunded": "#99E2FD",
     "metro": "#BA2B37",
     "regional": "#E64C00",
     "town": "#E69800",
