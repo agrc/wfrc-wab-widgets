@@ -6,6 +6,7 @@ import Tooltip from 'dijit/Tooltip';
 import landUseLegendTemplate from 'dojo/text!./LandUseLegend.html';
 import centersLegendTemplate from 'dojo/text!./CentersLegend.html';
 import dojoString from 'dojo/string';
+import topic from 'dojo/topic';
 
 
 const landUseLayers = ['centers', 'generalLandUse'];
@@ -18,6 +19,8 @@ export default declare([_WidgetBase, _TemplatedMixin], {
     console.log('Filter.postMixInProperties');
 
     this.nls = this.config.strings[this.config.language];
+
+    this.inherited(arguments);
   },
 
   postCreate() {
@@ -54,8 +57,11 @@ export default declare([_WidgetBase, _TemplatedMixin], {
       ]
     };
 
-    const onModeCheckboxChange = (mode) => {
-      this.modes[mode].forEach(layer => layer.setVisibility(this[mode].checked));
+    const onModeCheckboxChange = (changedMode) => {
+      this.modes[changedMode].forEach(layer => layer.setVisibility(this[changedMode].checked));
+
+      const visibleModes = Object.keys(this.modes).filter(mode => this[mode].checked);
+      topic.publish('url-params-on-filter-change', { modes: visibleModes });
     };
 
     Object.keys(this.modes).forEach(mode => {
@@ -68,6 +74,7 @@ export default declare([_WidgetBase, _TemplatedMixin], {
     const phaseCheckboxes = Array.from(this.domNode.getElementsByClassName('phasing-checkbox'));
     const onPhaseCheckboxChange = () => {
       const checkedPhaseIndexes = phaseCheckboxes.filter(box => box.checked).map(box => parseInt(box.value, 10));
+      topic.publish('url-params-on-filter-change', { phaseIndexes: checkedPhaseIndexes });
 
       Object.keys(this.config.phases).forEach(phaseLayerKey => {
         // apply phasing filter to land use layers only if the byPhasing checkbox is checked
@@ -95,6 +102,23 @@ export default declare([_WidgetBase, _TemplatedMixin], {
       [this.neighboringProjects, [layers.neighboringPoints, layers.neighboringLines]]
     ];
     singleLayerMappings.forEach(mapping => this.wireCheckboxToLayer(...mapping));
+
+    // pick up URLParam values if any
+    if (window.URLParams) {
+      if (window.URLParams.modes) {
+        console.log('modes', window.URLParams.modes);
+        Object.keys(this.modes).forEach(mode => {
+          this[mode].checked = window.URLParams.modes.includes(mode);
+        });
+      }
+
+      if (window.URLParams.phaseIndexes) {
+        console.log('phaseIndexes', window.URLParams.phaseIndexes);
+        phaseCheckboxes.forEach(checkbox => {
+          checkbox.checked = window.URLParams.phaseIndexes.includes(checkbox.value);
+        });
+      }
+    }
 
     // make map layers reflect initial state of filter controls
     onPhaseCheckboxChange();

@@ -84,6 +84,14 @@ export default declare([_WidgetBase], {
       // to be picked up by LayerSelector
       window.URLParams.basemap = params.basemap;
     }
+
+    // both of these to be picked up by WFRCFilter
+    if (params.modes) {
+      window.URLParams.modes = (typeof params.modes === 'string') ? [params.modes] : params.modes;
+    }
+    if (params.phaseIndexes) {
+      window.URLParams.phaseIndexes = params.phaseIndexes;
+    }
   },
 
   wireEvents() {
@@ -96,8 +104,17 @@ export default declare([_WidgetBase], {
       topic.subscribe('url-params-on-infopanel-open', this.setParams.bind(this, { infopanel: 'open' })),
       topic.subscribe('url-params-on-infopanel-close', this.setParams.bind(this, { infopanel: 'closed' })),
       topic.subscribe('url-params-on-map-click', this.setClickParams.bind(this)),
-      topic.subscribe('url-params-on-layer-selector-change', this.setBaseMap.bind(this))
+      topic.subscribe('url-params-on-layer-selector-change', this.setBaseMap.bind(this)),
+      topic.subscribe('url-params-on-filter-change', this.setFilterParams.bind(this))
     );
+  },
+
+  setFilterParams(filterParams) {
+    console.log('URLParams:setFilterParams', arguments);
+
+    this.setParams({
+      ...filterParams
+    });
   },
 
   setBaseMap(basemap) {
