@@ -37,7 +37,8 @@ module.exports = function (grunt) {
             'themes/!**/**/nls/*.js',
             'tests/spec/**/*.js',
             '!widgets/BetterAbout/About/**',
-            '!widgets/LayerSelector/layer-selector/**'
+            '!widgets/LayerSelector/layer-selector/**',
+            '!widgets/Sherlock/sherlock/**'
           ],
           dest: 'dist/'
         }]
@@ -51,7 +52,8 @@ module.exports = function (grunt) {
           'BetterAbout.zip',
           'URLParams.zip',
           'LayerSelector.zip',
-          'WFRCFilter.zip'
+          'WFRCFilter.zip',
+          'Sherlock.zip'
         ]),
         pushTo: 'origin'
       }
@@ -116,6 +118,17 @@ module.exports = function (grunt) {
           cwd: 'dist/',
           expand: true
         }]
+      },
+      Sherlock: {
+        options: {
+          archive: 'Sherlock.zip'
+        },
+        files: [{
+          src: 'widgets/Sherlock/**/**.*',
+          dest: './',
+          cwd: 'dist/',
+          expand: true
+        }]
       }
     },
     connect: {
@@ -139,6 +152,7 @@ module.exports = function (grunt) {
         src: [
           'widgets/BetterAbout/About/**/*.*',
           'widgets/LayerSelector/layer-selector/**',
+          'widgets/Sherlock/sherlock/**',
           'widgets/**/**.html',
           'widgets/**/**.json',
           'widgets/**/**.css',
@@ -168,7 +182,8 @@ module.exports = function (grunt) {
           '!widgets/BetterAbout/About/**',
           '!widgets/BetterAbout/nls/**',
           '!widgets/BetterAbout/setting/nls/**',
-          '!widgets/LayerSelector/layer-selector/**'
+          '!widgets/LayerSelector/layer-selector/**',
+          '!widgets/Sherlock/sherlock/**'
         ]
       }
     },
@@ -221,6 +236,14 @@ module.exports = function (grunt) {
           dest: 'widgets/LayerSelector/layer-selector/'
         }],
         compareUsing: 'md5'
+      },
+      sherlock: {
+        files: [{
+          cwd: 'node_modules/@agrc/sherlock',
+          src: ['*.js', 'resources/**', 'templates/**'],
+          dest: 'widgets/Sherlock/sherlock/'
+        }],
+        compareUsing: 'md5'
       }
     },
     watch: {
@@ -248,7 +271,7 @@ module.exports = function (grunt) {
     }
   });
 
-  grunt.registerTask('default', ['connect', 'sync:layerSelector', 'watch']);
+  grunt.registerTask('default', ['connect', 'sync:layerSelector', 'sync:sherlock', 'watch']);
 
   grunt.registerTask('test', ['clean', 'sass', 'babel', 'copy', 'connect', 'jasmine']);
 

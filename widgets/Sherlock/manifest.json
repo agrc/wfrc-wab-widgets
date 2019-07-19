@@ -1,0 +1,24 @@
+{
+  "name": "Sherlock",
+  "2D": true,
+  "3D": false,
+  "platform": "HTML",
+  "version": "1.5.1",
+  "wabVersion": "2.12",
+  "author": "Scott Davis <stdavis@utah.gov>",
+  "description": "A widget for searching for geographic features on a map.",
+  "copyright": "",
+  "license": "MIT",
+  "properties": {
+    "inPanel": false,
+    "hasLocale": true,
+    "hasStyle": true,
+    "hasConfig": true,
+    "hasUIFile": true,
+    "hasSettingPage": false,
+    "hasSettingUIFile": false,
+    "hasSettingLocale": false,
+    "hasSettingStyle": false,
+    "IsController": false
+  }
+}
