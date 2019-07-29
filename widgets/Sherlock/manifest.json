@@ -3,7 +3,7 @@
   "2D": true,
   "3D": false,
   "platform": "HTML",
-  "version": "1.5.1",
+  "version": "1.6.0",
   "wabVersion": "2.12",
   "author": "Scott Davis <stdavis@utah.gov>",
   "description": "A WAB wrapper around AGRC&#39;s sherlock widget.",

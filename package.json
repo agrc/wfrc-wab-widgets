@@ -1,6 +1,6 @@
 {
   "name": "wfrc-wab-widgets",
-  "version": "1.5.1",
+  "version": "1.6.0",
   "description": "Custom Web App Builder widgets build for Wasatch Front Regional Countil (WFRC)",
   "scripts": {
     "test": "grunt travis"
