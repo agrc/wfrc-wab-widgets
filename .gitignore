@@ -3,3 +3,5 @@ dist/
 node_modules/
 widgets/LayerSelector/layer-selector/
 widgets/Sherlock/sherlock/
+widgets/Sherlock/spinjs/
+widgets/Sherlock/bootstrap/

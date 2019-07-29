@@ -2,7 +2,7 @@ module.exports = function (grunt) {
   'use strict';
   require('load-grunt-tasks')(grunt);
 
-  const appDir = '/Users/stdavis/WebAppBuilderForArcGIS/server/apps/2';
+  const appDir = '/Users/stdavis/WebAppBuilderForArcGIS/server/apps/6';
   const stemappDir = '/Users/stdavis/WebAppBuilderForArcGIS/client/stemapp';
   const bumpFiles = ['package.json', 'package-lock.json', 'widgets/*/manifest.json'];
 
@@ -38,7 +38,9 @@ module.exports = function (grunt) {
             'tests/spec/**/*.js',
             '!widgets/BetterAbout/About/**',
             '!widgets/LayerSelector/layer-selector/**',
-            '!widgets/Sherlock/sherlock/**'
+            '!widgets/Sherlock/sherlock/**',
+            '!widgets/Sherlock/spinjs/**',
+            '!widgets/Sherlock/bootstrap/**'
           ],
           dest: 'dist/'
         }]
@@ -153,6 +155,8 @@ module.exports = function (grunt) {
           'widgets/BetterAbout/About/**/*.*',
           'widgets/LayerSelector/layer-selector/**',
           'widgets/Sherlock/sherlock/**',
+          'widgets/Sherlock/spinjs/**',
+          'widgets/Sherlock/bootstrap/**',
           'widgets/**/**.html',
           'widgets/**/**.json',
           'widgets/**/**.css',
@@ -183,7 +187,9 @@ module.exports = function (grunt) {
           '!widgets/BetterAbout/nls/**',
           '!widgets/BetterAbout/setting/nls/**',
           '!widgets/LayerSelector/layer-selector/**',
-          '!widgets/Sherlock/sherlock/**'
+          '!widgets/Sherlock/sherlock/**',
+          '!widgets/Sherlock/spinjs/**',
+          '!widgets/Sherlock/bootstrap/**'
         ]
       }
     },
@@ -240,8 +246,24 @@ module.exports = function (grunt) {
       sherlock: {
         files: [{
           cwd: 'node_modules/@agrc/sherlock',
-          src: ['*.js', 'resources/**', 'templates/**'],
+          src: ['**/*.js', 'resources/**', 'templates/**'],
           dest: 'widgets/Sherlock/sherlock/'
+        }],
+        compareUsing: 'md5'
+      },
+      spinjs: {
+        files: [{
+          cwd: 'node_modules/spin.js',
+          src: ['*.js', '*.css'],
+          dest: 'widgets/Sherlock/spinjs/'
+        }],
+        compareUsing: 'md5'
+      },
+      bootstrap: {
+        files: [{
+          cwd: 'node_modules/bootstrap/dist',
+          src: ['**/*.*'],
+          dest: 'widgets/Sherlock/bootstrap/'
         }],
         compareUsing: 'md5'
       }

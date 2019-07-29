@@ -6,7 +6,7 @@
   "version": "1.5.1",
   "wabVersion": "2.12",
   "author": "Scott Davis <stdavis@utah.gov>",
-  "description": "A widget for searching for geographic features on a map.",
+  "description": "A WAB wrapper around AGRC&#39;s sherlock widget.",
   "copyright": "",
   "license": "MIT",
   "properties": {

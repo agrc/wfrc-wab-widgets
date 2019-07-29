@@ -20,6 +20,7 @@
     "@babel/preset-env": "7.2.0",
     "arcgis-js-api": "git://github.com/Esri/arcgis-js-api.git#3.25.0",
     "babel-plugin-transform-es2015-modules-simple-amd": "0.3.0",
+    "bootstrap": "3.3.5",
     "dijit": "1.13.0",
     "dojo": "1.13.0",
     "dojox": "1.13.0",
@@ -42,7 +43,8 @@
     "jasmine-favicon-reporter": "1.0.0",
     "layer-selector": "1.1.2",
     "load-grunt-tasks": "4.0.0",
-    "moment": "2.22.1"
+    "moment": "2.22.1",
+    "spin.js": "2.3.2"
   },
   "browserslist": [
     "last 1 version"

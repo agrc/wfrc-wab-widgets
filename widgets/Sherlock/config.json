@@ -1,3 +1,5 @@
 {
-  "serviceUrl": "https://gis.wfrc.org/arcgis/rest/services/General/ZoomToPlaceNames/FeatureServer/0"
+  "serviceUrl": "https://gis.wfrc.org/arcgis/rest/services/General/ZoomToPlaceNames/FeatureServer/0",
+  "searchField": "NAME",
+  "placeHolder": "Map Search..."
 }

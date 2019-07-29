@@ -204,6 +204,59 @@ FCPhase IN (1, 4)
 `colors` - `[object]`  
 An object defining most of the colors used in the legend controls.
 
+### Sherlock
+This widget allows the user to quickly search for geographic features. It is a wrapper around the [AGRC Sherlock widget](https://github.com/agrc-widgets/sherlock).
+
+#### Configuration
+`serviceUrl`(required) - `[string]`  
+The URL to the service that you would like to search features on.
+
+`searchField`(required) - `[string]`  
+The name of the field that you would like the search to be applied to.
+
+`placeHolder` - `[string]`  
+The place holder text that shows up in the text box before a user starts typing.
+
+You may place any other config that Sherlock uses in the config file.
+
+#### Installation
+This widget is an on-screen widget so it requires the same additional steps to add it to WAB dev edition and existing apps as the URL Parameter widget above.
+
+In addition to the URL Parameter set up steps above, this widget also requires the following steps:
+
+##### WAB Developer Edition
+1. Add spinjs and sherlock as packages in `/client/builder/init.js` to `dojoConfig.packages` within the `else` block.
+  ```js
+  } else {
+    dojoConfig.baseUrl = window.apiUrl + 'dojo';
+    dojoConfig.packages = [{
+      name: "builder",
+      location: window.path + "builder"
+    }, {
+      name: "jimu",
+      location: window.path + 'stemapp/jimu.js'
+    }, {
+      name: "libs",
+      location: window.path + "stemapp/libs"
+    }, {
+      name: "dynamic-modules",
+      location: window.path + "stemapp/dynamic-modules"
+    }, {
+      name: "for3dSetting",
+      location: window.path + "builder/for3dSetting"
+    }, {
+      name: 'spinjs',
+      location: window.path + 'widgets/Sherlock/spinjs'
+    }, {
+      name: 'sherlock',
+      location: window.path + 'widgets/Sherlock/sherlock'
+    }];
+  ```
+
+##### Existing App
+1. Make the same change as above to `/init.js`.
+
+
 ## Development
 [Esri Yeoman Generators](https://github.com/Esri/generator-esri-appbuilder-js)  
 [Wrapped Widget Example](https://github.com/gbochenek/wab-test-example)
