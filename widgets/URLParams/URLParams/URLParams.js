@@ -51,7 +51,11 @@ export default declare([_WidgetBase], {
           // to be picked up by ProjectInfo widget
           window.URLParams.project = feature;
 
-          this.map.setExtent(feature.geometry.getExtent(), true);
+          if (feature.geometry.type === 'point') {
+            this.map.centerAndZoom(feature.geometry, this.config.pointZoomLevel);
+          } else {
+            this.map.setExtent(feature.geometry.getExtent(), true);
+          }
         }
 
         this.wireEvents();

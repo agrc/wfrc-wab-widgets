@@ -150,6 +150,10 @@ This widget allows the application to be configured via URL parameters. Technica
   },
   ```
 
+#### Configuration
+`pointZoomLevel` [number]  
+The caching scale level that you would like the map to zoom to for points. Higher numbers are larger scales.
+
 ### Layer Selector
 This widget is an alternative to the out-of-the-box Basemap Gallery widget. It is a wrapper around the [AGRC Layer Selector widget](https://github.com/agrc-widgets/layer-selector).
 
