@@ -177,6 +177,10 @@ export default declare([_WidgetBase, _TemplatedMixin], {
     // translate the phase info into a definition query taking into account the selected phases
     console.log('Filter.getPhaseQuery');
 
+    if (checkedPhaseIndexes.length === 0) {
+      return '1 = 2';
+    }
+
     const filterPhase = (_, i) => {
       return checkedPhaseIndexes.includes(i);
     };
