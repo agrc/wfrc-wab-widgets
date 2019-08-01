@@ -4,7 +4,7 @@
   "2D": true,
   "3D": false,
   "platform": "HTML",
-  "version": "1.6.0",
+  "version": "1.6.1",
   "wabVersion": "2.9",
   "author": "Scott Davis <stdavis@utah.gov>",
   "description": "A custom filter widget specific to WFRC layers and use case.",
