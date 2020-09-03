@@ -20,7 +20,7 @@
     "@babel/preset-env": "7.2.0",
     "arcgis-js-api": "git://github.com/Esri/arcgis-js-api.git#3.25.0",
     "babel-plugin-transform-es2015-modules-simple-amd": "0.3.0",
-    "bootstrap": "3.3.5",
+    "bootstrap": "3.4.1",
     "dijit": "1.13.8",
     "dojo": "1.13.7",
     "dojox": "1.14.6",
