@@ -43,7 +43,7 @@
     "jasmine-favicon-reporter": "1.0.0",
     "layer-selector": "1.1.2",
     "load-grunt-tasks": "4.0.0",
-    "moment": "2.29.2",
+    "moment": "2.29.4",
     "spin.js": "2.3.2"
   },
   "browserslist": [
