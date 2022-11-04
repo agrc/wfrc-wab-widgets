@@ -1,10 +1,11 @@
+const sass = require('node-sass');
+
 module.exports = function (grunt) {
   'use strict';
   require('load-grunt-tasks')(grunt);
 
-  const appDir = '/Users/stdavis/WebAppBuilderForArcGIS/server/apps/6';
-  const stemappDir = '/Users/stdavis/WebAppBuilderForArcGIS/client/stemapp';
-  const bumpFiles = ['package.json', 'package-lock.json', 'widgets/*/manifest.json'];
+  const appDir = '/Users/scottdavis/ArcGISWebAppBuilder/server/apps/2';
+  const stemappDir = '/Users/scottdavis/ArcGISWebAppBuilder/client/stemapp';
 
   grunt.initConfig({
     babel: {
@@ -44,20 +45,6 @@ module.exports = function (grunt) {
           ],
           dest: 'dist/'
         }]
-      }
-    },
-    bump: {
-      options: {
-        files: bumpFiles,
-        commitFiles: bumpFiles.concat([
-          'ProjectInfo.zip',
-          'BetterAbout.zip',
-          'URLParams.zip',
-          'LayerSelector.zip',
-          'WFRCFilter.zip',
-          'Sherlock.zip'
-        ]),
-        pushTo: 'origin'
       }
     },
     clean: {
@@ -136,19 +123,6 @@ module.exports = function (grunt) {
     connect: {
       uses_defaults: {} // eslint-disable-line camelcase
     },
-    conventionalGithubReleaser: {
-      options: {
-        auth: {
-          type: 'oauth',
-          token: process.env.CONVENTIONAL_GITHUB_RELEASER_TOKEN
-        },
-        changelogOpts: {
-          preset: 'angular',
-          draft: true
-        }
-      },
-      main: {}
-    },
     copy: {
       main: {
         src: [
@@ -177,7 +151,7 @@ module.exports = function (grunt) {
     },
     eslint: {
       options: {
-        configFile: '.eslintrc'
+        overrideConfigFile: '.eslintrc'
       },
       main: {
         src: [
@@ -212,6 +186,7 @@ module.exports = function (grunt) {
     sass: {
       dist: {
         options: {
+          implementation: sass,
           sourceMap: true
         },
         files: [{
@@ -297,14 +272,10 @@ module.exports = function (grunt) {
 
   grunt.registerTask('test', ['clean', 'sass', 'babel', 'copy', 'connect', 'jasmine']);
 
-  grunt.registerTask('travis', [
+  grunt.registerTask('test-ci', [
     'eslint',
     'test'
   ]);
 
-  grunt.registerTask('release', function (bumpType) {
-    grunt.task.run('test');
-    grunt.task.run(`bump-only:${bumpType || 'patch'}`);
-    grunt.task.run(['copy', 'compress', 'bump-commit', 'conventionalGithubReleaser']);
-  });
+  grunt.registerTask('deploy', ['copy', 'compress']);
 };
