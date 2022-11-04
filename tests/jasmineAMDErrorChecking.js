@@ -7,6 +7,7 @@ require(['dojo/domReady!'], function () {
 
       var hasProps = function (obj) {
         for (var prop in obj) {
+          // eslint-disable-next-line no-prototype-builtins
           if (obj.hasOwnProperty(prop)) {
             return true;
           }

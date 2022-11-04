@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import { applyFactories } from 'widgets/LayerSelector/utilities';
 import FeatureLayer from 'esri/layers/FeatureLayer';
 
