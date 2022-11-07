@@ -46,7 +46,7 @@
     "load-grunt-tasks": "^5.1.0",
     "moment": "2.29.4",
     "node-sass": "^7.0.3",
-    "spin.js": "2.3.2"
+    "spin.js": "4.1.1"
   },
   "browserslist": [
     "last 1 version"
