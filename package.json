@@ -18,9 +18,9 @@
   "author": "Scott Davis <stdavis@utah.gov>",
   "devDependencies": {
     "@agrc/sherlock": "1.2.0",
-    "@babel/core": "^7.19.6",
+    "@babel/core": "^7.20.5",
     "@babel/polyfill": "^7.12.1",
-    "@babel/preset-env": "^7.19.4",
+    "@babel/preset-env": "^7.20.2",
     "arcgis-js-api": "git://github.com/Esri/arcgis-js-api.git#3.25.0",
     "babel-plugin-transform-es2015-modules-simple-amd": "0.3.0",
     "bootstrap": "3.4.1",
@@ -38,14 +38,14 @@
     "grunt-contrib-copy": "1.0.0",
     "grunt-contrib-jasmine": "^3.0.0",
     "grunt-contrib-watch": "1.1.0",
-    "grunt-eslint": "^24.0.0",
+    "grunt-eslint": "^24.0.1",
     "grunt-sass": "3.1.0",
     "grunt-sync": "^0.8.2",
     "jasmine-favicon-reporter": "1.0.0",
     "layer-selector": "1.1.2",
     "load-grunt-tasks": "^5.1.0",
     "moment": "2.29.4",
-    "node-sass": "^7.0.3",
+    "node-sass": "^8.0.0",
     "spin.js": "2.3.2"
   },
   "browserslist": [
