@@ -21,7 +21,7 @@
     "@babel/core": "^7.19.6",
     "@babel/polyfill": "^7.12.1",
     "@babel/preset-env": "^7.19.4",
-    "arcgis-js-api": "git://github.com/Esri/arcgis-js-api.git#3.25.0",
+    "arcgis-js-api": "git://github.com/Esri/arcgis-js-api.git#4.26.5",
     "babel-plugin-transform-es2015-modules-simple-amd": "0.3.0",
     "bootstrap": "3.4.1",
     "dijit": "^1.17.3",
