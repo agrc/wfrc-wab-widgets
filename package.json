@@ -45,7 +45,7 @@
     "layer-selector": "1.1.2",
     "load-grunt-tasks": "^5.1.0",
     "moment": "2.29.4",
-    "node-sass": "^7.0.3",
+    "node-sass": "^9.0.0",
     "spin.js": "2.3.2"
   },
   "browserslist": [
