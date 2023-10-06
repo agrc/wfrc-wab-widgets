@@ -181,9 +181,6 @@ module.exports = function (grunt) {
           host: 'http://localhost:8000',
           keepRunner: true
         }
-      },
-      options: {
-        version: '3.8.0'
       }
     },
     sass: {
