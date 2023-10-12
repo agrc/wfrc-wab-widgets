@@ -18,9 +18,9 @@
   "author": "Scott Davis <stdavis@utah.gov>",
   "devDependencies": {
     "@agrc/sherlock": "1.2.0",
-    "@babel/core": "^7.23.0",
+    "@babel/core": "^7.23.2",
     "@babel/polyfill": "^7.12.1",
-    "@babel/preset-env": "^7.22.20",
+    "@babel/preset-env": "^7.23.2",
     "arcgis-js-api": "git://github.com/Esri/arcgis-js-api.git#3.25.0",
     "babel-plugin-transform-es2015-modules-simple-amd": "0.3.0",
     "bootstrap": "3.4.1",
