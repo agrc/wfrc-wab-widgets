@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.3](https://github.com/agrc/wfrc-wab-widgets/compare/v1.6.2...v1.6.3) (2023-10-13)
+
+
+### 🌲 Dependencies
+
+* **dev:** bump the safe-dependencies group with 2 updates ([8f62c61](https://github.com/agrc/wfrc-wab-widgets/commit/8f62c6157b28382ced1daeb5f89a9f21f893bf3c))
+
 ## [1.6.2](https://github.com/agrc/wfrc-wab-widgets/compare/v1.6.1...v1.6.2) (2023-10-06)
 
 
