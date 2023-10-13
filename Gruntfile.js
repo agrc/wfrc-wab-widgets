@@ -277,5 +277,7 @@ module.exports = function (grunt) {
     'test'
   ]);
 
+  grunt.registerTask('build', ['clean', 'sass', 'babel']);
+
   grunt.registerTask('deploy', ['copy', 'compress']);
 };

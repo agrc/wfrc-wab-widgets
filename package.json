@@ -6,7 +6,8 @@
     "test:ci": "grunt test-ci",
     "start": "grunt",
     "test": "grunt test",
-    "deploy": "grunt deploy"
+    "deploy": "grunt deploy",
+    "build": "grunt build"
   },
   "keywords": [],
   "license": "MIT",
