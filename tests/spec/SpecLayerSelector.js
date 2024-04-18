@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 import { applyFactories } from 'widgets/LayerSelector/utilities';
-import FeatureLayer from 'esri/layers/FeatureLayer';
+import VectorTileLayer from 'esri/layers/VectorTileLayer';
 
 
 describe('LayerSelector', () => {
@@ -11,8 +11,8 @@ describe('LayerSelector', () => {
         baseLayers: ['hello', 'have', 'a', 'nice', 'day'],
         overlays: ['Overlay', {
           id: 'Land Ownership',
-          Factory: 'FeatureLayer',
-          url: 'https://gis.trustlands.utah.gov/server/rest/services/Ownership/UT_SITLA_Ownership_LandOwnership_WM/FeatureServer/0'
+          Factory: 'VectorTileLayer',
+          url: 'https://gis.trustlands.utah.gov/hosting/rest/services/Hosted/Land_Ownership_WM_VectorTile/VectorTileServer'
         }, 'AddressPoints']
       };
 
@@ -21,8 +21,8 @@ describe('LayerSelector', () => {
         baseLayers: ['hello', 'have', 'a', 'nice', 'day'],
         overlays: ['Overlay', {
           id: 'Land Ownership',
-          Factory: FeatureLayer,
-          url: 'https://gis.trustlands.utah.gov/server/rest/services/Ownership/UT_SITLA_Ownership_LandOwnership_WM/FeatureServer/0'
+          Factory: VectorTileLayer,
+          url: 'https://gis.trustlands.utah.gov/hosting/rest/services/Hosted/Land_Ownership_WM_VectorTile/VectorTileServer'
         }, 'AddressPoints']
       };
 
