@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.6.4](https://github.com/agrc/wfrc-wab-widgets/compare/v1.6.3...v1.6.4) (2024-04-18)
+
+
+### 🐛 Bug Fixes
+
+* migrate deprecated eslint ignores config ([61a5f26](https://github.com/agrc/wfrc-wab-widgets/commit/61a5f2644cd9a519cfa65301918150b05ce41402))
+
+
+### 🌲 Dependencies
+
+* **dev:** bump ip from 2.0.0 to 2.0.1 ([00899ed](https://github.com/agrc/wfrc-wab-widgets/commit/00899ed9ef5913c75ddf6693e3d7866afa785d86))
+* **dev:** bump the major-dependencies group across 1 directory with 2 updates ([b193db2](https://github.com/agrc/wfrc-wab-widgets/commit/b193db2c7f70c69edfa92b0b3d7167cbf54fae84))
+
 ## [1.6.3](https://github.com/agrc/wfrc-wab-widgets/compare/v1.6.2...v1.6.3) (2023-10-13)
 
 
