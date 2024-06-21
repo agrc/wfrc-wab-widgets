@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.5](https://github.com/agrc/wfrc-wab-widgets/compare/v1.6.4...v1.6.5) (2024-06-21)
+
+
+### 🌲 Dependencies
+
+* **dev:** bump braces from 3.0.2 to 3.0.3 ([e7df4a6](https://github.com/agrc/wfrc-wab-widgets/commit/e7df4a679f2d3cddde8188d17b1a61866e7898db))
+
 ## [1.6.4](https://github.com/agrc/wfrc-wab-widgets/compare/v1.6.3...v1.6.4) (2024-04-18)
 
 
