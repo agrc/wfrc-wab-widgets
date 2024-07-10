@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.6.6](https://github.com/agrc/wfrc-wab-widgets/compare/v1.6.4...v1.6.6) (2024-07-10)
+
+
+### Bug Fixes
+
+* fix params for uploading artifacts ([37e13bd](https://github.com/agrc/wfrc-wab-widgets/commit/37e13bd3d51504cf84d3a6854eb8cd902e57fa90))
+
+
+### Dependencies
+
+* **dev:** bump braces from 3.0.2 to 3.0.3 ([e7df4a6](https://github.com/agrc/wfrc-wab-widgets/commit/e7df4a679f2d3cddde8188d17b1a61866e7898db))
+* **dev:** bump the safe-dependencies group across 1 directory with 4 updates ([30848c4](https://github.com/agrc/wfrc-wab-widgets/commit/30848c46a6ff27a80ea35117ec7168917b9bb2ee))
+
 ## [1.6.5](https://github.com/agrc/wfrc-wab-widgets/compare/v1.6.4...v1.6.5) (2024-07-10)
 
 
