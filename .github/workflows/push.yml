@@ -21,6 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       release_created: ${{ steps.release-please.outputs.release_created }}
+      released_version: ${{ steps.release-please.outputs.released_version }}
 
     steps:
       - name: 🚀 Create Release
@@ -64,5 +65,6 @@ jobs:
       - name: 🚀 Create release
         uses: svenstaro/upload-release-action@v2
         with:
-          tag: ${{ needs.release-please.outputs.tag_name }}
-          file_glob: "*.zip"
+          tag: ${{ needs.release-please.outputs.released_version }}
+          file: "*.zip"
+          file_glob: true
