@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.7](https://github.com/agrc/wfrc-wab-widgets/compare/1.6.6...v1.6.7) (2024-10-03)
+
+
+### Dependencies
+
+* FY25Q2 dependency updates 🌲 ([822d161](https://github.com/agrc/wfrc-wab-widgets/commit/822d161ea7333a3b71d7ceb44abdc477ef388bc3))
+
 ## [1.6.6](https://github.com/agrc/wfrc-wab-widgets/compare/v1.6.4...v1.6.6) (2024-07-10)
 
 
